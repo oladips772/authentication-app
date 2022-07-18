@@ -1,18 +1,9 @@
 /** @format */
 const userRouter = require("express").Router();
-const User = require("../models/userSchema");
-const asyncHandler = require("express-async-handler");
+const { registerUser } = require("../controllers/userController");
+const { validateUser, validate } = require("../middlewares/validator");
 
 // ? registering user
-userRouter.post(
-  "/register",
-  asyncHandler(async (req, res) => {
-    const { name, email, password } = req.body;
-    const user = await User.create({ name, email, password });
-    if (user) {
-      res.send(user);
-    }
-  })
-);
+userRouter.post("/register", validateUser, validate, registerUser);
 
 module.exports = userRouter;

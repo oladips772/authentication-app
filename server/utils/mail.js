@@ -1,6 +1,7 @@
 /** @format */
 require("dotenv").config();
 const nodemailer = require("nodemailer");
+
 const generateOTP = () => {
   let otp = "";
   for (let i = 0; i <= 3; i++) {

@@ -4,14 +4,14 @@ const {
   registerUser,
   loginUser,
   verifyEmail,
-  resetPassword,
+  forgotPassword,
 } = require("../controllers/userController");
 const { validateUser, validate } = require("../middlewares/validator");
 
 // ? registering user
 userRouter.post("/register", validateUser, validate, registerUser);
 userRouter.post("/login", loginUser);
-userRouter.post("/verifyaccount", verifyEmail);
-userRouter.post("/resetpassword", resetPassword);
+userRouter.post("/verify-account", verifyEmail);
+userRouter.post("/forgot-password", forgotPassword);
 
 module.exports = userRouter;

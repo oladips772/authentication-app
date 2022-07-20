@@ -72,24 +72,32 @@ const verifyEmail = asyncHandler(async (req, res) => {
   if (user && user.isVerified) {
     res.status(400);
     throw new Error("user already verified");
-  } else {
-    const token = await VerificationToken.findOne({ owner: user._id });
-    if (!token) {
-      res.status(400);
-      throw new Error("user not not found");
-    }
-    const tokenMatch = await bcrypt.compareSync(otp, token.token);
-    if (tokenMatch) {
-      user.isVerified = true;
-      await VerificationToken.findByIdAndDelete(token._id);
-      res.send(user);
-    } else {
-      res.send("wrong otp");
-    }
   }
+
+  const token = await VerificationToken.findOne({ owner: user._id });
+  if (!token) {
+    res.status(400);
+    throw new Error("user not not found");
+  }
+
+  if (token && (await token.compareToken(otp))) {
+    user.isVerified = true;
+    await user.save()
+    await VerificationToken.findByIdAndDelete(token._id);
+    mailTransport().sendMail({
+      from: "emailverification@email.com",
+      to: user.email,
+      subject: "verify your email",
+      html: `account verified succesfully`,
+    });
+    res.send(user);
+  } else {
+    res.send("wrong otp");
+  }
+
 });
 
-const resetPassword = asyncHandler(async (req, res) => {
+const forgotPassword = asyncHandler(async (req, res) => {
   const { email } = req.body;
   if (!email) {
     res.status(400);
@@ -113,10 +121,14 @@ const resetPassword = asyncHandler(async (req, res) => {
           subject: "password reset link request",
           html: `<h1>reset your  password ny following this link</h1>`,
         });
-        res.send("");
+        res.send("password reset link sent to your email");
       }
+    } else {
+      res.send("no user found");
     }
   }
 });
 
-module.exports = { registerUser, loginUser, verifyEmail, resetPassword };
+const resetPassword = asyncHandler(async (req, res) => {});
+
+module.exports = { registerUser, loginUser, verifyEmail, forgotPassword };

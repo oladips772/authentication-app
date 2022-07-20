@@ -5,8 +5,9 @@ const ResetToken = require("../models/resetToken");
 const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const { generateOTP, mailTransport } = require("../utils/mail");
-const { isValidObjectId } = require("mongoose");
-const crypto = require("crypto");
+const createRandomBytes = require("../utils/helper");
+const bcrypt = require("bcryptjs");
+const OTP = generateOTP();
 
 function generateToken(id) {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -24,20 +25,20 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   const user = await User.create({ name, email, password });
+
+  const veriToken = await VerificationToken.create({
+    owner: user._id,
+    token: OTP,
+  });
+
   mailTransport().sendMail({
     from: "emailverification@email.com",
     to: user.email,
     subject: "verify your email",
-    html: `<h1>${generateOTP()}</h1>`,
+    html: `<h1>${OTP}</h1>`,
   });
-  if (user) {
-    res.send(user);
-  }
-  const veriToken = await VerificationToken.create({
-    owner: user._id,
-    token: generateOTP(),
-  });
-  res.send(veriToken);
+
+  res.send(user);
 });
 
 const loginUser = asyncHandler(async (req, res) => {
@@ -66,36 +67,24 @@ const loginUser = asyncHandler(async (req, res) => {
 
 const verifyEmail = asyncHandler(async (req, res) => {
   const { userId, otp } = req.body;
-  if (!userId || !otp.trim()) {
+  const user = await User.findById(userId);
+
+  if (user && user.isVerified) {
     res.status(400);
-    throw new Error("otp and user id are required");
+    throw new Error("user already verified");
   } else {
-    if (isValidObjectId(userId)) {
-      const user = await User.findById(userId);
-      if (user.isVerified) {
-        res.status(400);
-        throw new Error("account verified already");
-      }
-      if (user) {
-        const token = await VerificationToken.findOne({
-          owner: userId,
-        });
-        if (token.comparePassword(otp)) {
-          user.isVerified = true;
-          await VerificationToken.findByIdAndDelete(token._id);
-          user.save();
-          mailTransport().sendMail({
-            from: "emailverification@email.com",
-            to: user.email,
-            subject: "email verification succesfull",
-            html: `<h1>email verified succesfully</h1>`,
-          });
-          res.send(user);
-        } else {
-          res.status(400);
-          throw new Error("wrong otp");
-        }
-      }
+    const token = await VerificationToken.findOne({ owner: user._id });
+    if (!token) {
+      res.status(400);
+      throw new Error("user not not found");
+    }
+    const tokenMatch = await bcrypt.compareSync(otp, token.token);
+    if (tokenMatch) {
+      user.isVerified = true;
+      await VerificationToken.findByIdAndDelete(token._id);
+      res.send(user);
+    } else {
+      res.send("wrong otp");
     }
   }
 });
@@ -113,7 +102,18 @@ const resetPassword = asyncHandler(async (req, res) => {
         res.status(400);
         throw new Error("reset password link can be resent after 1 hour");
       } else {
-       
+        const newToken = await createRandomBytes();
+        const resetToken = await ResetToken.create({
+          owner: user._id,
+          token: newToken,
+        });
+        mailTransport().sendMail({
+          from: "emailverification@email.com",
+          to: user.email,
+          subject: "password reset link request",
+          html: `<h1>reset your  password ny following this link</h1>`,
+        });
+        res.send("");
       }
     }
   }

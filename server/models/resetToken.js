@@ -22,7 +22,7 @@ const ResetTokenSchema = new mongoose.Schema(
   {
     timestamps: true,
   }
-);
+);  
 
 ResetTokenSchema.pre("save", async function (next) {
   if (this.isModified("token")) {

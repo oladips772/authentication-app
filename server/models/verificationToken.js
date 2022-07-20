@@ -26,14 +26,15 @@ const VerificationTokenSchema = new mongoose.Schema(
 
 VerificationTokenSchema.pre("save", async function (next) {
   if (this.isModified("token")) {
-    const hash = await bcrypt.hash(this.token, 8);
+    const hash = await bcrypt.hash(this.token, 10);
     this.token = hash;
   }
   next();
 });
 
-VerificationTokenSchema.methods.comparePassword = async function (token) {
-  return await bcrypt.compare(token, this.token);
+VerificationTokenSchema.methods.compareToken = async function (token) {
+  const result = await bcrypt.compareSync(token, this.token);
+  return result;
 };
 
 const VerificationToken = mongoose.model(

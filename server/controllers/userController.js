@@ -82,7 +82,7 @@ const verifyEmail = asyncHandler(async (req, res) => {
 
   if (token && (await token.compareToken(otp))) {
     user.isVerified = true;
-    await user.save()
+    await user.save();
     await VerificationToken.findByIdAndDelete(token._id);
     mailTransport().sendMail({
       from: "emailverification@email.com",
@@ -94,7 +94,6 @@ const verifyEmail = asyncHandler(async (req, res) => {
   } else {
     res.send("wrong otp");
   }
-
 });
 
 const forgotPassword = asyncHandler(async (req, res) => {
@@ -129,6 +128,38 @@ const forgotPassword = asyncHandler(async (req, res) => {
   }
 });
 
-const resetPassword = asyncHandler(async (req, res) => {});
+const resetPassword = asyncHandler(async (req, res) => {
+  const { password } = req.body;
+  const user = await User.findById(req.user._id);
+  const isSamePassword = await user.comparePassword(password);
+  if (isSamePassword) {
+    res.status(400);
+    throw new Error("new password can not be same as old password");
+  }
 
-module.exports = { registerUser, loginUser, verifyEmail, forgotPassword };
+  if (password.length < 8) {
+    res.status(400);
+    throw new Error("password must be atleast 8 characters");
+  }
+
+  user.password = password;
+  await user.save();
+  await ResetToken.findByIdAndDelete({ owner: user._id });
+   mailTransport().sendMail({
+     from: "emailverification@email.com",
+     to: user.email,
+     subject: "password reset link request",
+     html: `<h1>password changed succesfully</h1>`,
+   });
+
+   res.send("password changed succesfully");
+  
+});
+
+module.exports = {
+  registerUser,
+  loginUser,
+  verifyEmail,
+  forgotPassword,
+  resetPassword,
+};

@@ -32,7 +32,7 @@ ResetTokenSchema.pre("save", async function (next) {
   next();
 });
 
-ResetTokenSchema.methods.compareTpken = async function (token) {
+ResetTokenSchema.methods.compareToken = async function (token) {
   return await bcrypt.compare(token, this.token);
 };
 

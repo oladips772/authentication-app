@@ -35,7 +35,7 @@ const registerUser = asyncHandler(async (req, res) => {
     from: "emailverification@email.com",
     to: user.email,
     subject: "verify your email",
-    html: `<h1>${OTP}</h1>`,
+    html: `<h1> use this token ${OTP} to verify your email address</h1>`,
   });
 
   res.send(user);

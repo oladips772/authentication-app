@@ -7,9 +7,9 @@ const User = require("../models/userSchema");
 const isResetTokenValid = asyncHandler(async (req, res, next) => {
   const { token, id } = req.query;
 
-  if (!token) {
+  if (!token || !id) {
     res.status(400);
-    throw new Error("invalid token");
+    throw new Error("invalid token or id");
   }
   if (!isValidObjectId(id)) {
     res.status(400);

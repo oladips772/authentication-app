@@ -118,7 +118,9 @@ const forgotPassword = asyncHandler(async (req, res) => {
           from: "emailverification@email.com",
           to: user.email,
           subject: "password reset link request",
-          html: `<h1>reset your  password ny following this link</h1>`,
+          html: `<h1>reset your  password ny following this link</h1>
+          <a href="http://localhost:3000/reset-password?token=${newToken}&id=${user._id}">Reset Password</a>
+          `,
         });
         res.send("password reset link sent to your email");
       }
@@ -144,16 +146,16 @@ const resetPassword = asyncHandler(async (req, res) => {
 
   user.password = password;
   await user.save();
-  await ResetToken.findByIdAndDelete({ owner: user._id });
-   mailTransport().sendMail({
-     from: "emailverification@email.com",
-     to: user.email,
-     subject: "password reset link request",
-     html: `<h1>password changed succesfully</h1>`,
-   });
+  await ResetToken.findOneAndDelete({ owner: user._id });
 
-   res.send("password changed succesfully");
-  
+  mailTransport().sendMail({
+    from: "emailverification@email.com",
+    to: user.email,
+    subject: "password reset link request",
+    html: `<h1>password changed succesfully</h1>`,
+  });
+
+  res.send("password changed succesfully");
 });
 
 module.exports = {

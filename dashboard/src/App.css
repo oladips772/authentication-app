@@ -6,3 +6,15 @@
   margin:0;
   padding: 0;
 }
+
+body{
+  background:rgb(238, 237, 237);
+}
+
+.grid_div{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  margin-top: 30px;
+  
+}

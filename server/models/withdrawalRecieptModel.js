@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 
 const PaymentRecieptSchema = mongoose.Schema(
   {
-    plan: {
+    withdrawalPlan: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Plan",
+      ref: "PaymentReciept",
       required: true,
     },
     status: {

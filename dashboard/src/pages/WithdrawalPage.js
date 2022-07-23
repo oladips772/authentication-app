@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
 import receipts from "../data/receipt";
+import withdrawals from "../data/withdrawals";
 
 
 function WithdrawalPage() {
@@ -31,7 +32,7 @@ function WithdrawalPage() {
           {/* payments receipts */}
           <div className="grid grid-cols-2 gap-4">
             {/* receipt */}
-            {receipts.map((item) => (
+            {withdrawals.map((item) => (
               <div
                 className="shadow-md flex-col items-center p-2 rounded bg-black text-white"
                 key={item.id}

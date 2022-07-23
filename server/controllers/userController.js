@@ -6,7 +6,6 @@ const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const { generateOTP, mailTransport } = require("../utils/mail");
 const createRandomBytes = require("../utils/helper");
-const bcrypt = require("bcryptjs");
 const OTP = generateOTP();
 
 function generateToken(id) {
@@ -14,6 +13,11 @@ function generateToken(id) {
     expiresIn: "20d",
   });
 }
+
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({});
+  res.status(200).send(users);
+});
 
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
@@ -164,4 +168,5 @@ module.exports = {
   verifyEmail,
   forgotPassword,
   resetPassword,
+  getAllUsers,
 };

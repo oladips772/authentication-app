@@ -5,6 +5,7 @@ const connectDB = require("./connectDB.js");
 const userRouter = require("./routes/userRoute.js");
 const cors = require("cors");
 const paymentRouter = require("./routes/paymentRoute.js");
+const planRouter = require("./routes/planRoute.js");
 
 const app = express();
 app.use(cors())
@@ -12,7 +13,8 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use("/api/users", userRouter);
-app.use("/api/receipts", paymentRouter);
+app.use("/api/payment-receipts", paymentRouter);
+app.use("/api/plans", planRouter);
 connectDB();
 
 app.get("/", (req, res) => {

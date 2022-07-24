@@ -1,8 +1,52 @@
-const asyncHandler = require('express-async-handler');
+/** @format */
+const asyncHandler = require("express-async-handler");
 const PaymentReciept = require("../models/PaymenRecieptModel");
 
-const getAllPayments = asyncHandler(async (req, res) => {
-    
-})
+// ? create a payment
+const createPayment = asyncHandler(async (req, res) => {
+  const { plan, status, owner, amount, transactionId, ownerWallet } = req.body;
+  const payment = await PaymentReciept.create({
+    plan,
+    status,
+    owner,
+    amount,
+    transactionId,
+    ownerWallet,
+  });
+  if (payment) {
+    res.send(payment);
+  }
+});
 
-module.exports = {getAllPayments}
+// ? get all payments
+const getAllPayments = asyncHandler(async (req, res) => {
+  const payments = await PaymentReciept.find().populate("owner", "-password");
+  if (payments) {
+    res.json(payments);
+  }
+});
+
+// ? update or verify payment
+const verifyPayment = asyncHandler(async (req, res) => {
+  const paymentToUpdate = await PaymentReciept.findById(req.params.id);
+  if (paymentToUpdate) {
+    (paymentToUpdate.status = "verified"), await paymentToUpdate.save();
+  }
+  res.send(paymentToUpdate);
+});
+
+// ? rejecting payment
+const rejectPayment = asyncHandler(async (req, res) => {
+  const paymentToUpdate = await PaymentReciept.findById(req.params.id);
+  if (paymentToUpdate) {
+    (paymentToUpdate.status = "rejected"), await paymentToUpdate.save();
+  }
+  res.send(paymentToUpdate);
+});
+
+module.exports = {
+  getAllPayments,
+  createPayment,
+  verifyPayment,
+  rejectPayment,
+};

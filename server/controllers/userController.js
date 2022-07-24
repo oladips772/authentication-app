@@ -14,11 +14,13 @@ function generateToken(id) {
   });
 }
 
+// ? getting all users
 const getAllUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
-  res.status(200).send(users);
+  res.status(200).json(users);
 });
 
+// ? registering a new user
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -42,9 +44,10 @@ const registerUser = asyncHandler(async (req, res) => {
     html: `<h1> use this token ${OTP} to verify your email address</h1>`,
   });
 
-  res.send(user);
+  res.json(user);
 });
 
+// ? login a user
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -69,6 +72,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+// ? verifyign a user's email
 const verifyEmail = asyncHandler(async (req, res) => {
   const { userId, otp } = req.body;
   const user = await User.findById(userId);
@@ -94,12 +98,13 @@ const verifyEmail = asyncHandler(async (req, res) => {
       subject: "verify your email",
       html: `account verified succesfully`,
     });
-    res.send(user);
+    res.json(user);
   } else {
     res.send("wrong otp");
   }
 });
 
+// ? 
 const forgotPassword = asyncHandler(async (req, res) => {
   const { email } = req.body;
   if (!email) {

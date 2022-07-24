@@ -1,97 +1,27 @@
 /** @format */
-import React from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import UnpublishedIcon from "@mui/icons-material/Unpublished";
-
-const users = [
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: true,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: false,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: true,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: true,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: true,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: false,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: false,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: false,      
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: true,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: true,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: false,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: true,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: false,
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    isVerified: true,
-    joinded: "2020-01-01",
-  },
-];
+import axios from "axios";
+import moment from "moment";
 
 function UsersPage() {
+  const [users, setUsers] = useState([]);
+  const getUsers = async () => {
+    try {
+      const { data } = await axios("/api/users");
+      setUsers(data);
+      console.log(data);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
     <div className="flex">
       <Sidebar />
@@ -127,7 +57,7 @@ function UsersPage() {
                   </span>
                 )}
                 <span className="text-[16px] text-gray-900 font-[500]">
-                  {user.joinded}
+                  {moment(user?.createdAt).format("LL")}
                 </span>
               </div>
             ))}

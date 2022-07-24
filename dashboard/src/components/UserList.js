@@ -1,42 +1,26 @@
 /** @format */
-import React from "react";
+import { useEffect, useState } from "react";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import UnpublishedIcon from "@mui/icons-material/Unpublished";
-
-const users = [
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    status: "verified",
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    status: "verified",
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    status: "verified",
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    status: "verified",
-    joinded: "2020-01-01",
-  },
-  {
-    name: "john doe",
-    email: "john@gmail.com",
-    status: "verified",
-    joinded: "2020-01-01",
-  },
-];
+import axios from "axios";
+import moment from "moment";
 
 function UserList() {
+  const [users, setUsers] = useState([]);
+  const getUsers = async () => {
+    try {
+      const { data } = await axios("/api/users");
+      setUsers(data);
+      console.log(data);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
     <div className="ml-[60px] mt-8 bg-white rounded-lg shadow-lg p-4 w-[71%]">
       <h3 className="text-lg font-bold border-b border-gray-300">
@@ -57,11 +41,20 @@ function UserList() {
             <span className="text-[16px] text-gray-900 font-[500]">
               {user.email}
             </span>
-            <span className="text-[16px] text-green-500 flex items-center">
-              {user.status} <VerifiedIcon style={{ height: 15, width: 15 }} />{" "}
-            </span>
+            {user.isVerified ? (
+              <span className="text-green-500 text-[16px] flex items-center">
+                verified
+                <VerifiedIcon style={{ height: 15, width: 15 }} />
+              </span>
+            ) : (
+              <span className="text-red-600 text-[16px] flex items-center">
+                not verified
+                <UnpublishedIcon style={{ height: 15, width: 15 }} />
+              </span>
+            )}
+
             <span className="text-[16px] text-gray-900 font-[500]">
-              {user.joinded}
+              {moment(user?.createdAt).format("LL")}{" "}
             </span>
           </div>
         ))}

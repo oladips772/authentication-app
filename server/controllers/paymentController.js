@@ -20,7 +20,7 @@ const createPayment = asyncHandler(async (req, res) => {
 
 // ? get all payments
 const getAllPayments = asyncHandler(async (req, res) => {
-  const payments = await PaymentReciept.find().populate("owner", "-password");
+  const payments = await PaymentReciept.find().populate("owner plan");
   if (payments) {
     res.json(payments);
   }

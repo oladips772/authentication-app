@@ -5,8 +5,7 @@ import UnpublishedIcon from "@mui/icons-material/Unpublished";
 import axios from "axios";
 import moment from "moment";
 import toast, { Toaster } from "react-hot-toast";
-import loader from "./loader.png";
-
+import loader from "./big-loader.png";
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -22,8 +21,6 @@ function UserList() {
       console.log(data);
     } catch (err) {
       setLoading(false);
-
-      alert(err.message);
     }
   };
 
@@ -43,31 +40,41 @@ function UserList() {
           <span className="text-[14px] font-bold">ACCOUNT</span>
           <span className="text-[14px] font-bold">JOINED</span>
         </div>
-        {users.slice(0, 5).map((user) => (
-          <div className="flex justify-between my-2 p-2 cursor-pointer border-b border-gray-300">
-            <span className="text-[16px] text-gray-900 font-[500]">
-              {user.name}
-            </span>
-            <span className="text-[16px] text-gray-900 font-[500]">
-              {user.email}
-            </span>
-            {user.isVerified ? (
-              <span className="text-green-500 text-[16px] flex items-center">
-                verified
-                <VerifiedIcon style={{ height: 15, width: 15 }} />
-              </span>
-            ) : (
-              <span className="text-red-600 text-[16px] flex items-center">
-                not verified
-                <UnpublishedIcon style={{ height: 15, width: 15 }} />
-              </span>
-            )}
+        {loading ? (
+          <>
+            <div className="flex justify-center items-center  text-center ">
+              <img src={loader} className="object-contain h-[85px] w-[85px]" />
+            </div>
+          </>
+        ) : (
+          <>
+            {users.slice(0, 5).map((user) => (
+              <div className="flex justify-between my-2 p-2 cursor-pointer border-b border-gray-300">
+                <span className="text-[16px] text-gray-900 font-[500]">
+                  {user.name}
+                </span>
+                <span className="text-[16px] text-gray-900 font-[500]">
+                  {user.email}
+                </span>
+                {user.isVerified ? (
+                  <span className="text-green-500 text-[16px] flex items-center">
+                    verified
+                    <VerifiedIcon style={{ height: 15, width: 15 }} />
+                  </span>
+                ) : (
+                  <span className="text-red-600 text-[16px] flex items-center">
+                    not verified
+                    <UnpublishedIcon style={{ height: 15, width: 15 }} />
+                  </span>
+                )}
 
-            <span className="text-[16px] text-gray-900 font-[500]">
-              {moment(user?.createdAt).format("LL")}{" "}
-            </span>
-          </div>
-        ))}
+                <span className="text-[16px] text-gray-900 font-[500]">
+                  {moment(user?.createdAt).format("LL")}{" "}
+                </span>
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

@@ -17,11 +17,11 @@ function WithdrawalPage() {
       const { data } = await axios.put(`/api/withdrawals/update/${id}`);
       setVerifyLoading(false);
       toast.success("you confirmed payment sent");
+      window.location.reload();
     } catch (err) {
       setVerifyLoading(false);
       toast.error(err?.response.data.message);
     }
-    
   }
 
   const getWithdrawals = async () => {
@@ -30,7 +30,6 @@ function WithdrawalPage() {
       const { data } = await axios.get("/api/withdrawals");
       setWithdrawals(data);
       setLoading(false);
-
       console.log(data);
     } catch (err) {
       setLoading(false);
@@ -62,17 +61,17 @@ function WithdrawalPage() {
         {/* search div */}
         <div className="w-full bg-white mt-4 shadow-md rounded-sm p-4">
           {/* payments receipts */}
-          <div className="grid grid-cols-2 gap-4">
-            {/* receipt */}
-            <div>
-              {loading ? (
-                <div className="flex justify-center items-center  text-center ">
-                  <img
-                    src={loader}
-                    className="object-contain h-[85px] w-[85px]"
-                  />
-                </div>
-              ) : (
+          {/* receipt */}
+          <div>
+            {loading ? (
+              <div className="flex justify-center items-center  text-center ">
+                <img
+                  src={loader}
+                  className="object-contain h-[85px] w-[85px]"
+                />
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-4">
                 <>
                   {withdrawals?.map((item) => (
                     <div
@@ -126,8 +125,15 @@ function WithdrawalPage() {
                     </div>
                   ))}
                 </>
-              )}
-            </div>
+              </div>
+            )}
+            {withdrawals?.length === 0 && (
+              <div className="flex justify-center items-center text-center">
+                <p className="text-gray-800 text-2xl">
+                  No withdrawals requested yet
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

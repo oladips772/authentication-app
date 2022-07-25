@@ -21,6 +21,12 @@ const registerAdmin = asyncHandler(async (req, res) => {
 // ? login admin
 const loginAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+
+  if (!email || !password) {
+    res.status(400);
+    throw new Error("email and password required");
+  }
+
   const admin = await Admin.findOne({ email });
   if (admin && (await admin.comparePassword(password))) {
     res.json({
@@ -34,4 +40,27 @@ const loginAdmin = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerAdmin, loginAdmin };
+// ? admin update password
+const updatePassword = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  const admin = await Admin.findOne({ email });
+  if (admin) {
+    admin.password = req.body.password || admin.password;
+  }
+  await admin.save();
+  res.json(admin);
+});
+
+// ? update admin profile;
+const updateProfile = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  const admin = await Admin.findOne({ email });
+  if (admin) {
+    admin.email = email || admin.email;
+    admin.password = password || admin.password;
+  }
+  await admin.save();
+  res.json(admin);
+});
+
+module.exports = { registerAdmin, loginAdmin, updatePassword,updateProfile };

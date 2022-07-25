@@ -18,14 +18,14 @@ function App() {
             style: {
               background: "black",
               color: "white",
-              borderRadius: "10px",
+              borderRadius: "25px",
             },
           },
           error: {
             style: {
               background: "black",
               color: "white",
-              borderRadius: "10px",
+              borderRadius: "25px",
             },
           },
         }}

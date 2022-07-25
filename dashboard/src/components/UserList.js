@@ -5,6 +5,8 @@ import UnpublishedIcon from "@mui/icons-material/Unpublished";
 import axios from "axios";
 import moment from "moment";
 import toast, { Toaster } from "react-hot-toast";
+import loader from "./loader.png";
+
 
 function UserList() {
   const [users, setUsers] = useState([]);

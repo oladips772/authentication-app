@@ -2,27 +2,39 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+import loader from "../components/big-loader.png";
+import smallLoader from "../components/loader.png";
 
 function WithdrawalPage() {
   const [withdrawals, setWithdrawals] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [verifyLoading, setVerifyLoading] = useState(false);
 
   async function verifyWithdrawal(id) {
     try {
+      setVerifyLoading(true);
       const { data } = await axios.put(`/api/withdrawals/update/${id}`);
-      console.log(data);
-      alert("payment sent");
+      setVerifyLoading(false);
+      toast.success("you confirmed payment sent");
     } catch (err) {
-      console.log(err);
-      alert(err?.response.data.message);
+      setVerifyLoading(false);
+      toast.error(err?.response.data.message);
     }
+    
   }
 
   const getWithdrawals = async () => {
     try {
+      setLoading(true);
       const { data } = await axios.get("/api/withdrawals");
       setWithdrawals(data);
+      setLoading(false);
+
       console.log(data);
-    } catch (err) {}
+    } catch (err) {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -41,7 +53,10 @@ function WithdrawalPage() {
           <p className="text-gray-600">
             you can confirm when you have sent the payment by clicking on the{" "}
             <span className="text-green-600 font-[500]">verify button </span> on
-            each withdrawal. <span className="text-red-800 font-[500]">Note : this can't be undone</span>
+            each withdrawal.{" "}
+            <span className="text-red-800 font-[500]">
+              Note : this can't be undone
+            </span>
           </p>
         </div>
         {/* search div */}
@@ -49,50 +64,70 @@ function WithdrawalPage() {
           {/* payments receipts */}
           <div className="grid grid-cols-2 gap-4">
             {/* receipt */}
-            {withdrawals?.map((item) => (
-              <div
-                className="shadow-md flex-col items-center p-2 rounded bg-black text-white"
-                key={item._id}
-              >
-                <div className="flex justify-between items-center border-b border-red-300 pb-2 ">
-                  <div
-                    className="flex items-center space-x-2"
-                    style={{ wordBreak: "break-all" }}
-                  >
-                    <p>Plan:</p>
-                    <span className="text-blue-500">
-                      {item.withdrawalReceipt._id}
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <p>Status:</p>
-                    <span className="text-green-400 rounded ">
-                      {item.status}
-                    </span>
-                  </div>
+            <div>
+              {loading ? (
+                <div className="flex justify-center items-center  text-center ">
+                  <img
+                    src={loader}
+                    className="object-contain h-[85px] w-[85px]"
+                  />
                 </div>
-                <div className="flex justify-between items-center my-4">
-                  <p>Date Created:</p>
-                  <span>march 21 2022</span>
-                </div>
-                <div className="flex justify-between items-center my-4">
-                  <p>Payment User:</p>
-                  <span>{item.owner.email}</span>
-                </div>
-                <div className="flex justify-between items-center my-4">
-                  <p>User Wallet:</p>
-                  <span>{item.ownerWallet}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <button
-                    className="bg-green-600 text-white text-sm font-[500] h-[30px] w-full rounded-sm"
-                    onClick={() => verifyWithdrawal(item._id)}
-                  >
-                    VERIFY
-                  </button>
-                </div>
-              </div>
-            ))}
+              ) : (
+                <>
+                  {withdrawals?.map((item) => (
+                    <div
+                      className="shadow-md flex-col items-center p-2 rounded bg-black text-white"
+                      key={item._id}
+                    >
+                      <div className="flex justify-between items-center border-b border-red-300 pb-2 ">
+                        <div
+                          className="flex items-center space-x-2"
+                          style={{ wordBreak: "break-all" }}
+                        >
+                          <p>Plan:</p>
+                          <span className="text-blue-500">
+                            {item.withdrawalReceipt._id}
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <p>Status:</p>
+                          <span className="text-green-400 rounded ">
+                            {item.status}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center my-4">
+                        <p>Date Created:</p>
+                        <span>march 21 2022</span>
+                      </div>
+                      <div className="flex justify-between items-center my-4">
+                        <p>Payment User:</p>
+                        <span>{item.owner.email}</span>
+                      </div>
+                      <div className="flex justify-between items-center my-4">
+                        <p>User Wallet:</p>
+                        <span>{item.ownerWallet}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <button
+                          className="bg-green-600 text-white text-sm font-[500] h-[30px] w-full rounded-sm flex items-center justify-center text-center"
+                          onClick={() => verifyWithdrawal(item._id)}
+                        >
+                          {verifyLoading ? (
+                            <img
+                              src={smallLoader}
+                              className="h-[30px] w-[30px] object-contain justify-center text-center flex items-center"
+                            />
+                          ) : (
+                            "VERIFY"
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

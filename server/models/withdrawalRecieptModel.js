@@ -1,9 +1,9 @@
 /** @format */
 const mongoose = require("mongoose");
 
-const PaymentRecieptSchema = mongoose.Schema(
+const WithdrawalSchema = mongoose.Schema(
   {
-    withdrawalPlan: {
+    withdrawalReceipt: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "PaymentReciept",
       required: true,
@@ -26,5 +26,5 @@ const PaymentRecieptSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-const PaymentReciept = mongoose.model("PaymentReciept", PaymentRecieptSchema);
-module.exports = PaymentReciept;
+const Withdrawal = mongoose.model("Withdrawal", WithdrawalSchema);
+module.exports = Withdrawal;

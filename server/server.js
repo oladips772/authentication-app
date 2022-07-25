@@ -16,7 +16,7 @@ app.use(express.json());
 app.use("/api/users", userRouter);
 app.use("/api/payment-receipts", paymentRouter);
 app.use("/api/plans", planRouter);
-app.use("/api/withdrawals", withdrawalRouterRouter);
+app.use("/api/withdrawals", withdrawalRouter);
 connectDB();
 
 app.get("/", (req, res) => {

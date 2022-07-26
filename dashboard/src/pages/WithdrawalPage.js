@@ -10,8 +10,10 @@ function WithdrawalPage() {
   const [withdrawals, setWithdrawals] = useState([]);
   const [loading, setLoading] = useState(false);
   const [verifyLoading, setVerifyLoading] = useState(false);
+  const [currentId, setCurrentId] = useState("");
 
   async function verifyWithdrawal(id) {
+    setCurrentId(id);
     try {
       setVerifyLoading(true);
       const { data } = await axios.put(`/api/withdrawals/update/${id}`);
@@ -22,6 +24,7 @@ function WithdrawalPage() {
       setVerifyLoading(false);
       toast.error(err?.response.data.message);
     }
+    setCurrentId("");
   }
 
   const getWithdrawals = async () => {

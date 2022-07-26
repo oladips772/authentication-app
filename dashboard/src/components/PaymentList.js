@@ -8,8 +8,10 @@ import toast, { Toaster } from "react-hot-toast";
 function PaymentList({ data }) {
   const [verifyLoading, setVerifyLoading] = useState(false);
   const [rejectLoading, setRejectLoading] = useState(false);
+  const [currentId, setCurrentId] = useState("");
 
   const verifyPayment = async (id) => {
+    setCurrentId(id);
     try {
       setVerifyLoading(true);
       const response = await axios.put(
@@ -22,9 +24,11 @@ function PaymentList({ data }) {
       setVerifyLoading(false);
       console.log(err);
     }
+    setCurrentId("");
   };
 
   const rejectPayment = async (id) => {
+    setCurrentId(id);
     try {
       setRejectLoading(true);
       const response = await axios.put(
@@ -37,6 +41,7 @@ function PaymentList({ data }) {
       setRejectLoading(false);
       console.log(err);
     }
+    setCurrentId("");
   };
 
   return (
@@ -113,10 +118,16 @@ function PaymentList({ data }) {
                 onClick={() => verifyPayment(item._id)}
               >
                 {verifyLoading ? (
-                  <img
-                    src={loader}
-                    className="h-[30px] w-[30px] object-contain justify-center text-center flex items-center"
-                  />
+                  <>
+                    {currentId === item._id ? (
+                      <img
+                        src={loader}
+                        className="h-[30px] w-[30px] object-contain justify-center text-center flex items-center"
+                      />
+                    ) : (
+                      "VERIFY"
+                    )}
+                  </>
                 ) : (
                   "VERIFY"
                 )}
@@ -127,14 +138,22 @@ function PaymentList({ data }) {
                 className="bg-red-600 text-white text-sm font-[500] h-[35px] w-full rounded-sm  flex items-center justify-center text-center"
                 onClick={() => rejectPayment(item._id)}
               >
-                {rejectLoading ? (
-                  <img
-                    src={loader}
-                    className="h-[30px] w-[30px] object-contain justify-center text-center flex items-center"
-                  />
-                ) : (
-                  "REJECT"
-                )}
+                <>
+                  {rejectLoading ? (
+                    <>
+                      {currentId === item._id ? (
+                        <img
+                          src={loader}
+                          className="h-[30px] w-[30px] object-contain justify-center text-center flex items-center"
+                        />
+                      ) : (
+                        "REJECT"
+                      )}
+                    </>
+                  ) : (
+                    "REJECT"
+                  )}
+                </>
               </button>
             )}
           </div>

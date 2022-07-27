@@ -11,8 +11,8 @@ function generateToken(id) {
 
 // ? register admin
 const registerAdmin = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-  const admin = await Admin.create({ email, password });
+  const { name, email, password } = req.body;
+  const admin = await Admin.create({ name, email, password });
   if (admin) {
     res.json(admin);
   }
@@ -23,19 +23,19 @@ const loginAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    res.status(400);
-    throw new Error("email and password required");
+    res.status(400).send("email and password are required");
   }
 
   const admin = await Admin.findOne({ email });
   if (admin && (await admin.comparePassword(password))) {
     res.json({
+      name: admin.name,
       email: admin.email,
       _id: admin._id,
       token: generateToken(admin._id),
     });
   } else {
-    res.status(401).send("wrong email or password")
+    res.status(401).send("wrong email or password");
     // throw new Error("wrong email or password");
   }
 });
@@ -45,9 +45,11 @@ const updatePassword = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const admin = await Admin.findOne({ email });
   if (admin) {
-    admin.password = req.body.password || admin.password;
+    admin.password = password || admin.password;
+    await admin.save();
+  } else {
+    res.status(401).send("email not found");
   }
-  await admin.save();
   res.json(admin);
 });
 
@@ -63,4 +65,4 @@ const updateProfile = asyncHandler(async (req, res) => {
   res.json(admin);
 });
 
-module.exports = { registerAdmin, loginAdmin, updatePassword,updateProfile };
+module.exports = { registerAdmin, loginAdmin, updatePassword, updateProfile };

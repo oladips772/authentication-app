@@ -4,7 +4,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import loader from "../components/loader.png";
 
 function LoginPage() {
@@ -15,9 +15,6 @@ function LoginPage() {
   const navigate = useNavigate();
 
   async function LOGIN() {
-    if (!email || !password) {
-      toast.error("email and password are required");
-    }
     try {
       setLoading(true);
       const { data } = await axios.post("/api/admins/login", {
@@ -36,7 +33,7 @@ function LoginPage() {
 
   return (
     <div className="bg-black h-[100vh] flex items-center justify-center text-center">
-      <div className="bg-black p-2 flex flex-col w-[430px] shadow-md h-[400px] rounded-md -mt-[40px] border border-gray-800">
+      <div className="bg-black p-2 flex flex-col w-[430px] shadow-md h-[370px] rounded-md -mt-[40px] border border-gray-800">
         <img
           src="https://ethereum.org/static/c48a5f760c34dfadcf05a208dab137cc/d1ef9/eth-diamond-rainbow.png"
           className="object-contain ml-2 mt-4 h-20 w-20 text-center justify-center self-center"
@@ -83,11 +80,13 @@ function LoginPage() {
             "Login"
           )}
         </button>
-        <p className="mt-2 mb-6 text-gray-500">
+        <p className="mt-2 mb-2 text-gray-500">
           forgot password ?{" "}
-          <span className="text-green-600 cursor-pointer">click here</span>
+          <Link to="/reset-password">
+          <span className="text-gray-300 cursor-pointer">click here</span>
+          </Link>
         </p>
-        <span className="flex items-center justify-center text-gray-500">
+        <span className="flex items-center justify-center text-gray-700 text-sm">
           coinbox&copy;2022{" "}
         </span>
       </div>

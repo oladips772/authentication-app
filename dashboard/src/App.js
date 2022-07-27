@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import AdminsPage from "./pages/AdminsPage";
 import toast, { Toaster } from "react-hot-toast";
 import PrivateRoute from "./PrivateRoute";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               background: "black",
               color: "white",
               borderRadius: "25px",
+              border: "1px solid darkgray",
             },
           },
           error: {
@@ -27,6 +29,7 @@ function App() {
               background: "black",
               color: "white",
               borderRadius: "25px",
+              border: "1px solid darkgray",
             },
           },
         }}
@@ -75,6 +78,7 @@ function App() {
           }
         />
         <Route path="/Login" element={<LoginPage />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </div>
   );

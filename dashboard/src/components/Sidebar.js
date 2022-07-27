@@ -11,6 +11,12 @@ import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined
 function Sidebar() {
   const status = navigator.onLine;
   const [systemStatus, setSystemStatus] = useState(status);
+  const navigate = useNavigate("");
+
+  function LOGOUT() {
+    localStorage.removeItem("adminInfo");
+    navigate("/Login");
+  }
 
   useEffect(() => {
     setSystemStatus(status);
@@ -104,7 +110,10 @@ function Sidebar() {
         </div>
       </div>
       {/*  */}
-      <div className="absolute bottom-10 flex items-center mx-2 cursor-pointer">
+      <div
+        className="absolute bottom-10 flex items-center mx-2 cursor-pointer"
+        onClick={LOGOUT}
+      >
         <LogoutIcon className="rotate-180 text-white mr-2 text-sm" />
         <p className="text-white text-sm font-semibold">LOG OUT</p>
       </div>

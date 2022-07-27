@@ -116,10 +116,16 @@ function WithdrawalPage() {
                           onClick={() => verifyWithdrawal(item._id)}
                         >
                           {verifyLoading ? (
-                            <img
-                              src={smallLoader}
-                              className="h-[30px] w-[30px] object-contain justify-center text-center flex items-center"
-                            />
+                            <>
+                              {currentId === item._id ? (
+                                <img
+                                  src={smallLoader}
+                                  className="h-[30px] w-[30px] object-contain justify-center text-center flex items-center"
+                                />
+                              ) : (
+                                "VERIFY"
+                              )}
+                            </>
                           ) : (
                             "VERIFY"
                           )}

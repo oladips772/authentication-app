@@ -8,6 +8,7 @@ import WithdrawalPage from "./pages/WithdrawalPage";
 import LoginPage from "./pages/LoginPage";
 import AdminsPage from "./pages/AdminsPage";
 import toast, { Toaster } from "react-hot-toast";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
@@ -31,11 +32,48 @@ function App() {
         }}
       />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/Users" element={<UsersPage />} />
-        <Route path="/Payment-Reciepts" element={<RecieptPage />} />
-        <Route path="/Withdrawals" element={<WithdrawalPage />} />
-        <Route path="/Admin" element={<AdminsPage />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Users"
+          element={
+            <PrivateRoute>
+              {" "}
+              <UsersPage />{" "}
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Payment-Reciepts"
+          element={
+            <PrivateRoute>
+              {" "}
+              <RecieptPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Withdrawals"
+          element={
+            <PrivateRoute>
+              <WithdrawalPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Admin"
+          element={
+            <PrivateRoute>
+              <AdminsPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="/Login" element={<LoginPage />} />
       </Routes>
     </div>

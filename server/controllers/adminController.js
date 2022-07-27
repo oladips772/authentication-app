@@ -35,8 +35,8 @@ const loginAdmin = asyncHandler(async (req, res) => {
       token: generateToken(admin._id),
     });
   } else {
-    res.status(400);
-    throw new Error("wrong email or password");
+    res.status(401).send("wrong email or password")
+    // throw new Error("wrong email or password");
   }
 });
 

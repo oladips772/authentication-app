@@ -112,6 +112,7 @@ function WithdrawalPage() {
                       </div>
                       <div className="flex justify-between items-center">
                         <button
+                          disabled={verifyLoading}
                           className="bg-green-600 text-white text-sm font-[500] h-[30px] w-full rounded-sm flex items-center justify-center text-center"
                           onClick={() => verifyWithdrawal(item._id)}
                         >

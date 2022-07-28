@@ -114,6 +114,7 @@ function PaymentList({ data }) {
           <div className="flex justify-between items-center">
             {item.status === "rejected" && (
               <button
+                disabled={verifyLoading}
                 className="bg-green-600 text-white text-sm font-[600] h-[35px] rounded-sm w-full flex items-center justify-center text-center"
                 onClick={() => verifyPayment(item._id)}
               >
@@ -135,6 +136,7 @@ function PaymentList({ data }) {
             )}
             {item.status === "verified" && (
               <button
+                disabled={rejectLoading}
                 className="bg-red-600 text-white text-sm font-[500] h-[35px] w-full rounded-sm  flex items-center justify-center text-center"
                 onClick={() => rejectPayment(item._id)}
               >

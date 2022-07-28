@@ -29,7 +29,7 @@ function UserList() {
   }, []);
 
   return (
-    <div className="ml-[60px] mt-8 bg-white rounded-lg shadow-lg p-4 w-[71%] mb-6">
+    <div className="ml-[60px] mt-8 bg-white rounded-lg shadow-lg p-4 w-[71%] mb-8">
       <h3 className="text-lg font-bold border-b border-gray-300">
         Some of your users
       </h3>

@@ -1,12 +1,12 @@
 /** @format */
 import "./App.css";
-import Form from "./components/Form";
 import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <Routes>
-      <Route path="/reset-password" element={<Form />} />
+      <Route path="/" exact element={<Home />} />
     </Routes>
   );
 }

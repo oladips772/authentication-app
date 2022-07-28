@@ -71,6 +71,7 @@ function LoginPage() {
         </div>
 
         <button
+        disabled={loading}
           className="bg-gray-900 text-white rounded-sm mt-4 h-[40px] text-sm font-[400] border border-gray-800 flex items-center justify-center"
           onClick={LOGIN}
         >

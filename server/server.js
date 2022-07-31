@@ -8,6 +8,7 @@ const paymentRouter = require("./routes/paymentRoute.js");
 const planRouter = require("./routes/planRoute.js");
 const withdrawalRouter = require("./routes/withdrawalRoute.js");
 const adminRouter = require("./routes/adminRoute.js");
+const newsRouter = require("./routes/newsRoute.js");
 
 const app = express();
 app.use(cors())
@@ -19,6 +20,7 @@ app.use("/api/payment-receipts", paymentRouter);
 app.use("/api/plans", planRouter);
 app.use("/api/withdrawals", withdrawalRouter);
 app.use("/api/admins", adminRouter);
+app.use("/api/news", newsRouter);
 connectDB();
 
 app.get("/", (req, res) => {

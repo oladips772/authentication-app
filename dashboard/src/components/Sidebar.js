@@ -7,6 +7,8 @@ import AccountBalanceOutlinedIcon from "@mui/icons-material/AccountBalanceOutlin
 import CurrencyExchangeOutlinedIcon from "@mui/icons-material/CurrencyExchangeOutlined";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
+import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
+import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 
 function Sidebar() {
   const status = navigator.onLine;
@@ -91,6 +93,36 @@ function Sidebar() {
           >
             <CurrencyExchangeOutlinedIcon className="mx-4 text-lg" />
             <p className="text-[12px] font-semibold">WITHDRAWALS</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink
+            to="/Create-Contents"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "white" : "darkgray",
+                borderLeft: isActive ? "solid 4px white" : "",
+              };
+            }}
+          >
+            <DriveFileRenameOutlineOutlinedIcon className="mx-4 text-lg" />
+            <p className="text-[12px] font-semibold">CREATE CONTENTS</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink
+            to="/Contents"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "white" : "darkgray",
+                borderLeft: isActive ? "solid 4px white" : "",
+              };
+            }}
+          >
+            <LibraryBooksOutlinedIcon className="mx-4 text-lg" />
+            <p className="text-[12px] font-semibold">CONTENTS</p>
           </NavLink>
         </div>
         <div className="my-4">

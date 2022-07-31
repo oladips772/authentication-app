@@ -7,9 +7,11 @@ import RecieptPage from "./pages/RecieptPage";
 import WithdrawalPage from "./pages/WithdrawalPage";
 import LoginPage from "./pages/LoginPage";
 import AdminsPage from "./pages/AdminsPage";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import PrivateRoute from "./PrivateRoute";
 import ResetPassword from "./pages/ResetPassword";
+import Contents from "./pages/Contents";
+import CreateContent from "./pages/CreateContent";
 
 function App() {
   return (
@@ -66,6 +68,22 @@ function App() {
           element={
             <PrivateRoute>
               <WithdrawalPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Create-Contents"
+          element={
+            <PrivateRoute>
+              <CreateContent />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Contents"
+          element={
+            <PrivateRoute>
+              <Contents />
             </PrivateRoute>
           }
         />

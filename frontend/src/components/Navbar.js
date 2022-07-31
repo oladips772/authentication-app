@@ -3,16 +3,21 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const [showNav, setShowNav] = useState(false);
+  const variants = {
+    open: { opacity: 1, x: 0 },
+    closed: { opacity: 1, x: 0 },
+  };
 
   return (
-    <nav
+    <nav 
       className={`${
         !showNav
           ? "bg-white h-[60px] w-full shadow-md flex items-center justify-between md:justify-around lg:justify-around fixed top-0 z-10"
-          : "flex-col items-center space-y-2 bg-white h-[100%] shadow-md"
+          : "flex-col items-center space-y-2 bg-white h-[100%] shadow-md fixed top-0 z-10 w-[100%]"
       } `}
     >
       {/* logo and icon div */}
@@ -25,7 +30,7 @@ function Navbar() {
       >
         {/* <img src={logo} className="h-40 w-40 resize-contain" alt="" /> */}
         <h3 className="text-3xl text-blue-900 font-[500]">coinbox</h3>
-        <div className="flex md:hidden lg:hidden mr-4">
+        <div className="flex md:hidden lg:hidden mr-4" >
           {showNav ? (
             <CloseIcon
               className="cursor-pointer"
@@ -40,7 +45,9 @@ function Navbar() {
         </div>
       </div>
       {/* links div */}
-      <div
+      <motion.div
+      animate={showNav ? "open" : "closed"}
+      variants={variants}
         className={`${
           !showNav
             ? "items-center space-x-4 hidden md:flex lg:flex"
@@ -87,9 +94,11 @@ function Navbar() {
         >
           Contact
         </Link>
-      </div>
+      </motion.div>
       {/* actions */}
-      <div
+      <motion.div
+      animate={showNav ? "open" : "closed"}
+      variants={variants}
         className={`${
           !showNav
             ? "items-center space-x-4 hidden md:flex lg:flex"
@@ -116,7 +125,7 @@ function Navbar() {
         >
           Get started
         </Link>
-      </div>
+      </motion.div>
       {/* icons div */}
     </nav>
   );

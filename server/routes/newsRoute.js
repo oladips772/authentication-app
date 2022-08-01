@@ -4,6 +4,7 @@ const {
   getAllNews,
   updateNews,
   deleteNews,
+  getNews,
 } = require("../controllers/newsController");
 const newsRouter = require("express").Router();
 
@@ -12,6 +13,9 @@ newsRouter.post("/create", createNews);
 
 // ? getting all news route
 newsRouter.get("/", getAllNews);
+
+// ? getting a news route
+newsRouter.get("/:id", getNews);
 
 // ? updating news route
 newsRouter.put("/update/:id", updateNews);

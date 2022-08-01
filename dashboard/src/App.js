@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import ResetPassword from "./pages/ResetPassword";
 import Contents from "./pages/Contents";
 import CreateContent from "./pages/CreateContent";
+import ContentDetails from "./pages/ContentDetails";
 
 function App() {
   return (
@@ -84,6 +85,14 @@ function App() {
           element={
             <PrivateRoute>
               <Contents />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Contents-details/:id"
+          element={
+            <PrivateRoute>
+              <ContentDetails />
             </PrivateRoute>
           }
         />

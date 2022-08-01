@@ -45,6 +45,7 @@ const updatePassword = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const admin = await Admin.findOne({ email });
   if (admin) {
+    admin.email = email || admin.email
     admin.password = password || admin.password;
     await admin.save();
   } else {
@@ -55,8 +56,8 @@ const updatePassword = asyncHandler(async (req, res) => {
 
 // ? update admin profile;
 const updateProfile = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-  const admin = await Admin.findOne({ email });
+  const { email, password,id } = req.body;
+  const admin = await Admin.findById(id);
   if (admin) {
     admin.email = email || admin.email;
     admin.password = password || admin.password;

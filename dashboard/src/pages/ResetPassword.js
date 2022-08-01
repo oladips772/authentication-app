@@ -22,7 +22,7 @@ function ResetPassword() {
     } else {
       try {
         setLoading(true);
-        const { data } = await axios.post("/api/admins/update-password", {
+        const { data } = await axios.put("/api/admins/update-password", {
           email,
           password,
         });

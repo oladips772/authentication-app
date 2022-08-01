@@ -45,7 +45,7 @@ const updatePassword = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const admin = await Admin.findOne({ email });
   if (admin) {
-    admin.email = email || admin.email
+    admin.email = email || admin.email;
     admin.password = password || admin.password;
     await admin.save();
   } else {
@@ -56,7 +56,7 @@ const updatePassword = asyncHandler(async (req, res) => {
 
 // ? update admin profile;
 const updateProfile = asyncHandler(async (req, res) => {
-  const { email, password,id } = req.body;
+  const { email, password, id } = req.body;
   const admin = await Admin.findById(id);
   if (admin) {
     admin.email = email || admin.email;
@@ -66,4 +66,26 @@ const updateProfile = asyncHandler(async (req, res) => {
   res.json(admin);
 });
 
-module.exports = { registerAdmin, loginAdmin, updatePassword, updateProfile };
+// ? get All admins
+const getAdmins = asyncHandler(async (req, res) => {
+  const admins = await Admin.find({});
+  if (admins) {
+    res.send(admins);
+  }
+});
+
+// ? delete admin
+const deleteAdmin = asyncHandler(async (req, res) => {
+  const { id } = req.params.id;
+  await Admin.findByIdAndDelete(id);
+  res.send("admin deleted succesfully");
+});
+
+module.exports = {
+  registerAdmin,
+  loginAdmin,
+  updatePassword,
+  updateProfile,
+  getAdmins,
+  deleteAdmin,
+};

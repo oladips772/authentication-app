@@ -12,9 +12,16 @@ function generateToken(id) {
 // ? register admin
 const registerAdmin = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
-  const admin = await Admin.create({ name, email, password });
-  if (admin) {
-    res.json(admin);
+
+  const adminExists = await Admin.findOne({ email });
+  if (adminExists) {
+    res.status(400).send("admin already exists");
+    return;
+  } else {
+    const admin = await Admin.create({ name, email, password });
+    if (admin) {
+      res.json(admin);
+    }
   }
 });
 
@@ -68,7 +75,7 @@ const updateProfile = asyncHandler(async (req, res) => {
 
 // ? get All admins
 const getAdmins = asyncHandler(async (req, res) => {
-  const admins = await Admin.find({});
+  const admins = await Admin.find();
   if (admins) {
     res.send(admins);
   }
@@ -76,8 +83,8 @@ const getAdmins = asyncHandler(async (req, res) => {
 
 // ? delete admin
 const deleteAdmin = asyncHandler(async (req, res) => {
-  const { id } = req.params.id;
-  await Admin.findByIdAndDelete(id);
+  const { id } = req.body;
+  const admin = await Admin.findByIdAndDelete(id);
   res.send("admin deleted succesfully");
 });
 

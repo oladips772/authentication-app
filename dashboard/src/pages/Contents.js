@@ -7,6 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import moment from "moment";
 
+
 function Contents() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -40,11 +41,13 @@ function Contents() {
             where you can update or delete content
           </p>
         </div>
-        <div className=" p-4 grid grid-cols-3 gap-6 bg-white">
-          {loading ? (
-            <img src={loader} alt="" className="h-[40px] w-[40px]" />
-          ) : (
-            <>
+        {loading ? (
+          <div className="flex items-center justify-center bg-white">
+            <img src={loader} alt="" className="" />
+          </div>
+        ) : (
+          <>
+            <div className=" p-4 grid grid-cols-3 gap-6 bg-white">
               {news?.map((item) => (
                 <Link to={`/Contents-details/${item._id}`} key={item._id}>
                   <div className="flex flex-col bg-white shadow-md rounded cursor-pointer overflow-hidden">
@@ -62,9 +65,9 @@ function Contents() {
                   </div>
                 </Link>
               ))}
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

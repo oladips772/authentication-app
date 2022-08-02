@@ -18,6 +18,7 @@ function AdminsPage() {
   const [adminName, setAdminName] = useState("");
   const [adminEmail, setAdminEmail] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
+  
 
   // ? updating profile
   const updateProfile = async () => {

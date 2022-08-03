@@ -24,6 +24,7 @@ function Contents() {
     }
   };
 
+
   useEffect(() => {
     getNews();
   }, []);

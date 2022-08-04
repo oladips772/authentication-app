@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
     "axios": "^0.27.2",
+    "currency-formatter": "^1.5.9",
     "framer-motion": "^6.5.1",
     "query-string": "^7.1.1",
     "react": "^18.2.0",

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import userPng from "../images/user.png";
 import moneyPng from "../images/money.png";
 import planPng from "../images/plan.png";
-import { AnimationOnScroll } from "react-animation-on-scroll";
 import "animate.css/animate.min.css";
 import axios from "axios";
 import currencyFormatter from "currency-formatter";
@@ -13,7 +12,6 @@ import { motion, useTransform, useViewportScroll } from "framer-motion";
 function Main() {
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0.95, 0.6], [1.1, 0.4]);
-  // const scale2 = useTransform(scrollYProgress, [0.9, 0.6], [1.1, 0.4]);
 
   const [coins, setCoins] = useState([]);
   const URL =
@@ -51,7 +49,12 @@ function Main() {
         </div>
       </motion.div>
       {/* COINS DIV */}
-      <div className="bg-white border border-slate-300 mb-10 mt-6">
+      <div
+        className="bg-white border border-slate-300 mb-10 mt-6"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+      >
         <div className="flex justify-between items-center p-4 border-b border-slate-300">
           <h4 className="mx-2 font-[500] text-lg text-gray-600">Name</h4>
           <h4 className="mx-2 font-[500] text-lg text-gray-600 ">Price</h4>
@@ -60,7 +63,12 @@ function Main() {
           </h4>
         </div>
         {coins?.slice(0, 13).map((coin) => (
-          <div className="flex justify-between items-center border-b border-slate-200 p-4 mx-4">
+          <div
+            className="flex justify-between items-center border-b border-slate-200 p-4 mx-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false }}
+          >
             <div className="flex items-center space-x-4 ">
               <img src={coin.image} alt="" className="h-[35px] w-[35px]" />
               <h4 className="font-[500] text-[20px]">{coin.name}</h4>
@@ -183,7 +191,7 @@ function Main() {
               Coinbox supports a variety of the most popular digital currencies.
             </p>
           </div>
-          <div className="flex flex-col md:flex-row lg:flex-row justify-between mt-6 w-full space-y-12">
+          <div className="flex flex-col mt-6 space-y-12 md:space-y-0 lg:space-y-0 items-center md:flex-row md:items-center lg:items-center lg:flex-row justify-between w-full">
             <div className="flex flex-col items-center space-y-4 mx-6">
               <img
                 src={userPng}

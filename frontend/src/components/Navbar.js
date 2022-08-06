@@ -106,7 +106,7 @@ function Navbar() {
         }`}
       >
         <Link
-          to="/"
+          to="/login"
           className={` ${
             !showNav
               ? "font-[500] mx-4 text-[15px]"

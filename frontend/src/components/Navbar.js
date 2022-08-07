@@ -116,7 +116,7 @@ function Navbar() {
           Sign in
         </Link>
         <Link
-          to="/"
+          to="/signup"
           className={`${
             !showNav
               ? "font-[500] bg-blue-700 text-white h-[36px] p-[2px] text-[15px] w-[98px] flex justify-center items-center rounded-[4px]"

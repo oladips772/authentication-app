@@ -5,7 +5,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-function Login() {
+function Register() {
   const [showPassword, setShowPassword] = useState("");
   const navigate = useNavigate();
 
@@ -16,10 +16,21 @@ function Login() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
     >
-      <div className="h-[570px] w-full max-w-[390px] p-[30px] border-0 md:max-w-[500px] lg:max-w-[500px] md:border lg:border md:border-slate-300 lg:border-slate-300 md:p-[45px] lg:p-[45px] rounded-lg">
-        <div className="mb-[40px]">
-          <h1 className="text-[30px] text-blue-800 font-bold mt-8">coinbox</h1>
-          <p className="text-[25px] font-bold">Sign in to Coinbox.</p>
+      <div className="h-[580px] md:h-[640px] lg:h-[640px] w-full max-w-[390px] p-[20px] border-0 md:max-w-[500px] lg:max-w-[500px] md:border lg:border md:border-slate-300 lg:border-slate-300 md:p-[45px] lg:p-[45px] rounded-lg">
+        <div className="mb-[40px] mt-10">
+          <h1 className="text-[30px] mt-10 text-blue-800 font-bold">coinbox</h1>
+          <p className="text-[25px] font-bold">Create your free account.</p>
+        </div>
+        <div className="flex flex-col mb-4">
+          <label htmlFor="name" className="font-[700]">
+            Full Name
+          </label>
+          <input
+            type="text"
+            placeholder="Your full name"
+            name="name"
+            className="h-[50px] p-2 border border-slate-500 outline-none rounded-lg placeholder:text-slate-500 font-[600]"
+          />
         </div>
         <div className="flex flex-col mb-4">
           <label htmlFor="email" className="font-[700]">
@@ -57,20 +68,17 @@ function Login() {
           </div>
         </div>
         <button className="h-[50px] rounded-[30px] w-full bg-blue-600 text-white mt-8 font-[700] mb-2">
-          Sign in
+          Create account
         </button>
         <button
           className="h-[50px] rounded-[30px] w-full bg-gray-200  mt-4 font-[700] mb-2"
-          onClick={() => navigate("/signup")}
+          onClick={() => navigate("/login")}
         >
-          Create free account
+          Sign in to your account
         </button>
-        <span className="font-[600] text-blue-600 mt-[20px] cursor-pointer">
-          Forgot password?
-        </span>
       </div>
     </motion.div>
   );
 }
 
-export default Login;
+export default Register;

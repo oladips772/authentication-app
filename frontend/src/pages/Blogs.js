@@ -1,15 +1,32 @@
 /** @format */
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import BlogPosts from "../components/BlogPosts";
 import BlogLoader from "../components/BlogLoader";
-import axios from "axios"
+import axios from "axios";
+import Footer from "../components/Footer";
 
 function Blogs() {
-  const [blogs, setBlogs] = useState()
-  const [loading, setLoading] = useState(false)
-  
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getBlogs = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get("/api/news");
+      setBlogs(data);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getBlogs();
+  }, []);
+
   return (
     <div>
       <motion.div>
@@ -18,7 +35,7 @@ function Blogs() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false }}
-          className="bg-blue-700 text-white h-[200px] mt-8 mb-6"
+          className="bg-blue-700 text-white h-[200px] mt-8 mb-[70px]"
         >
           <div className="max-w-[1070px] mx-auto flex flex-col ">
             <h1 className="text-[50px] font-[900] mt-12">coinbox</h1>
@@ -28,8 +45,9 @@ function Blogs() {
             </p>
           </div>
         </motion.div>
-          <BlogPosts />
+        <>{loading ? <BlogLoader /> : <BlogPosts blogs={blogs} />}</>
       </motion.div>
+        <Footer />
     </div>
   );
 }

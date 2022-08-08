@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="bg-blue-900 h-full flex flex-col items-center md:flex-row lg:flex-row justify-around pb-6 mt-4">
+    <div className="bg-blue-900 h-full flex flex-col items-center md:flex-row lg:flex-row justify-around pb-6 mt-12">
       <div className="px-4 mt-6 mb-8">
         <h1 className="text-2xl font-bold text-white ">coinbox</h1>
         <span className="text-white font-[400] text-sm">

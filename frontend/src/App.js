@@ -7,7 +7,7 @@ import Register from "./pages/Register";
 import VerifyPage from "./pages/VerfiyPage";
 import ForgotPassword from "./pages/ForgotPassword";
 import Blogs from "./pages/Blogs";
-
+import BlogDetail from "./pages/BlogDetail";
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
       <Route path="/verfiy_account" element={<VerifyPage />} />
       <Route path="/forgot_password" element={<ForgotPassword />} />
       <Route path="/coinbox_blogs" element={<Blogs />} />
+      <Route path="/coinbox_blogs_detail/:id" element={<BlogDetail />} />
     </Routes>
   );
 }

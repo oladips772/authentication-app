@@ -1,10 +1,15 @@
 /** @format */
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import BlogPosts from "../components/BlogPosts";
+import BlogLoader from "../components/BlogLoader";
+import axios from "axios"
 
 function Blogs() {
+  const [blogs, setBlogs] = useState()
+  const [loading, setLoading] = useState(false)
+  
   return (
     <div>
       <motion.div>

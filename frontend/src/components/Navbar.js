@@ -75,7 +75,7 @@ function Navbar() {
           Plans
         </Link>
         <Link
-          to="/"
+          to="/coinbox_blogs"
           className={` ${
             !showNav
               ? "font-[500] mx-4 text-[15px] hover:text-blue-600"

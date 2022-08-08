@@ -26,6 +26,7 @@ function Main() {
   useEffect(() => {
     // getCoins();
   }, []);
+  
 
   return (
     <main className="mt-[80px]">
@@ -48,7 +49,7 @@ function Main() {
           </button>
         </div>
       </motion.div>
-      {/* COINS DIV */}
+      {/* COINS DIV */}                                                                 
       <div
         className="bg-white border border-slate-300 mb-10 mt-6"
         initial={{ opacity: 0 }}

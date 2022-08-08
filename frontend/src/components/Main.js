@@ -133,7 +133,6 @@ function Main() {
       {/* plan div */}
       <motion.div
         className="my-12 pb-4"
-        className="my-12 mb-8 mt-[20px]"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false }}

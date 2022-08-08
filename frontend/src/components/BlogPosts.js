@@ -16,7 +16,7 @@ function BlogPosts({ blogs }) {
             <h1 className="text-[25px] text-black mb-2 font-[700] p-2">
               {blog?.title}
             </h1>
-            <div className="flex items-center mt-[2px] text-gray-600 font-[600] p-2">
+            <div className="flex items-center  text-gray-600 font-[600] p-2">
               <p> {moment(blog?.createdAt).format("LL")}</p>{" "}
               <span className="ml-2"> {blog.minuteRead} min read</span>
             </div>

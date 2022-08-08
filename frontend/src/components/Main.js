@@ -26,7 +26,6 @@ function Main() {
   useEffect(() => {
     // getCoins();
   }, []);
-  
 
   return (
     <main className="mt-[80px]">
@@ -49,7 +48,7 @@ function Main() {
           </button>
         </div>
       </motion.div>
-      {/* COINS DIV */}                                                                 
+      {/* COINS DIV */}
       <div
         className="bg-white border border-slate-300 mb-10 mt-6"
         initial={{ opacity: 0 }}
@@ -132,17 +131,18 @@ function Main() {
         <div className="bg-blue-700 h-4 my-4"></div>
       </div>
       {/* plan div */}
-      <motion.div className="my-12 pb-4" style={{ scale }}>
+      <motion.div
+        className="my-12 pb-4"
+        className="my-12 mb-8 mt-[20px]"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+      >
         <h1 className="text-center text-[27px] font-[600] mb-4 text-slate-600">
           Plans With Assured Profits
         </h1>
         <motion.div>
-          <motion.div
-            className="flex flex-col items-center md:flex-row lg:flex-row justify-around "
-            style={{
-              scaleY: scrollYProgress,
-            }}
-          >
+          <motion.div className="flex flex-col items-center md:flex-row lg:flex-row justify-around ">
             <div className="flex flex-col items-center shadow-md p-[45px] mb-8">
               <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
                 Silver Plan

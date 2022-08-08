@@ -4,16 +4,16 @@ const asyncHandler = require("express-async-handler");
 
 // ? create news function
 const createNews = asyncHandler(async (req, res) => {
-  const { title, content, image, video } = req.body;
+  const { title, content, minuteRead, image } = req.body;
   if (!title || !content) {
     res.status(401).send("please fill all fields");
   } else {
-    if (title || content || image || video) {
+    if (title || content || image || minuteRead) {
       const news = await News.create({
         title,
         content,
+        minuteRead,
         image,
-        video,
       });
       res.status(200).send(news);
     }
@@ -46,8 +46,8 @@ const updateNews = asyncHandler(async (req, res) => {
   if (news) {
     news.content = req.body.content || news.content;
     news.title = req.body.title || news.title;
+    news.minuteRead = req.body.minuteRead || news.minuteRead;
     news.image = req.body.image || news.image;
-    news.video = req.body.video || news.video;
     await news.save();
     res.status(200).send(news);
   } else {

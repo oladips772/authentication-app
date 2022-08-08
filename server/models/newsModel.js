@@ -11,11 +11,11 @@ const newsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    image: {
-      type: String,
-      required: false,
+    minuteRead: {
+      type: Number,
+      required: true,
     },
-    video: {
+    image: {
       type: String,
       required: false,
     },

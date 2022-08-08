@@ -9,6 +9,7 @@ function CreateContent() {
   const [selectedImage, setSelectedImage] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [minuteRead,setMinuteRead] = useState("");
   const [cloudLoading, setCloudLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
@@ -58,11 +59,13 @@ function CreateContent() {
       const { data } = await axios.post(`/api/news/create`, {
         title,
         content,
+        minuteRead,
         image,
       });
       toast.success("created content successfully");
       setTitle("");
       setContent("");
+      setMinuteRead("");
       setImage(null);
       setLoading(false);
     } catch (err) {
@@ -85,6 +88,13 @@ function CreateContent() {
             onChange={(e) => setTitle(e.target.value)}
             type="text"
             placeholder="Title"
+            className="outline-none border border-slate-600 h-[40px] rounded w-[60%] p-2 mt-2 placeholder:text-slate-600"
+          />
+          <input
+            value={minuteRead}
+            onChange={(e) => setMinuteRead(e.target.value)}
+            type="number"
+            placeholder="Minutes read"
             className="outline-none border border-slate-600 h-[40px] rounded w-[60%] p-2 mt-2 placeholder:text-slate-600"
           />
           <textarea

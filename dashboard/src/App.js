@@ -89,7 +89,7 @@ function App() {
           }
         />
         <Route
-          path="/blog-details/:id"
+          path="/Contents-details/:id"
           element={
             <PrivateRoute>
               <ContentDetails />

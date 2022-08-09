@@ -2,6 +2,9 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import DetailLoader from "../components/DetailLoader";
+import Blog from "../components/Blog";
+import Navbar from "../components/Navbar";
 
 function BlogDetail() {
   let params = useParams();
@@ -26,7 +29,14 @@ function BlogDetail() {
     getBlog();
   }, []);
 
-  return <div>BlogDetail</div>;
+  return (
+    <div>
+      <Navbar />
+      <div className="max-w-[1000px]  mx-auto">
+        <>{loading ? <DetailLoader /> : <Blog blog={blog} />}</>
+      </div>
+    </div>
+  );
 }
 
 export default BlogDetail;

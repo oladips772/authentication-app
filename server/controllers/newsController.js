@@ -30,6 +30,16 @@ const getAllNews = asyncHandler(async (req, res) => {
   }
 });
 
+// ? get other news excluding current reading blog
+const getOtherBlogs = asyncHandler(async (req, res) => {
+  const news = await News.find({ _id: { $ne: req.body.blogId } });
+  if (news) {
+    res.status(200).send(news);
+  } else {
+    res.status(400).send("no news data yet");
+  }
+});
+
 // ? get news by id
 const getNews = asyncHandler(async (req, res) => {
   const news = await News.findById(req.params.id);
@@ -63,4 +73,11 @@ const deleteNews = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { createNews, getAllNews, updateNews, deleteNews ,getNews};
+module.exports = {
+  createNews,
+  getAllNews,
+  updateNews,
+  deleteNews,
+  getNews,
+  getOtherBlogs,
+};

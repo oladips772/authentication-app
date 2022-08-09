@@ -1,11 +1,32 @@
 /** @format */
 import React from "react";
 import moment from "moment";
+import axios from "axios";
 
 function Blog({ blog }) {
+  const [blogs, setBlogs] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+  const blogId = blog?._id;
+
+  const getOtherBlogs = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get("/api/news/otherblogs", blogId);
+      setBlogs(data);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      console.log(err);
+    }
+  };
+
+  React.useEffect(() => {
+    getOtherBlogs();
+  }, []);
+
   return (
     <div className="mt-[100px]">
-      <div className="max-w-[670px] w-full mb-10">
+      <div className="max-w-[670px] w-full mb-14">
         <img
           src={blog?.image}
           alt={blog?.title}
@@ -22,6 +43,11 @@ function Blog({ blog }) {
           </div>
           <h3 className="text-gray-600 text-lg p-2">{blog?.content}</h3>
         </div>
+      </div>
+      {/* other blogs container */}
+      <div className="max-w-[670px] w-full mb-10">
+        <h1 className="text-3xl font-[600]">Read More</h1>
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-2"></div>
       </div>
     </div>
   );

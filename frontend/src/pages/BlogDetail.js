@@ -27,7 +27,7 @@ function BlogDetail() {
 
   useEffect(() => {
     getBlog();
-  }, []);
+  }, [blogId]);
 
   return (
     <div>

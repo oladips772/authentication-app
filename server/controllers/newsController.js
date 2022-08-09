@@ -32,7 +32,8 @@ const getAllNews = asyncHandler(async (req, res) => {
 
 // ? get other news excluding current reading blog
 const getOtherBlogs = asyncHandler(async (req, res) => {
-  const news = await News.find({ _id: { $ne: req.body.blogId } });
+  const { blogId } = req.body;
+  const news = await News.find({ _id: { $ne:blogId } });
   if (news) {
     res.status(200).send(news);
   } else {

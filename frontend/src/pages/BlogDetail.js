@@ -5,6 +5,7 @@ import axios from "axios";
 import DetailLoader from "../components/DetailLoader";
 import Blog from "../components/Blog";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function BlogDetail() {
   let params = useParams();
@@ -32,9 +33,10 @@ function BlogDetail() {
   return (
     <div>
       <Navbar />
-      <div className="max-w-[1000px]  mx-auto">
+      <div className="max-w-[1000px] mx-auto">
         <>{loading ? <DetailLoader /> : <Blog blog={blog} />}</>
       </div>
+      <Footer />
     </div>
   );
 }

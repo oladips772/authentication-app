@@ -35,11 +35,11 @@ function Blogs() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false }}
-          className="bg-blue-700 text-white h-[200px] mt-8 mb-[70px]"
+          className="bg-blue-700 text-white h-[100%] mt-8 mb-[70px]"
         >
-          <div className="max-w-[1070px] mx-auto flex flex-col ">
-            <h1 className="text-[50px] font-[900] mt-12">coinbox</h1>
-            <p className="text-lg font-[600]">
+          <div className="max-w-[1070px] mx-auto flex flex-col p-2">
+            <h1 className="text-[50px] font-[900] mt-12 pt-4">coinbox</h1>
+            <p className="text-lg font-[600] pb-4">
               Stories from the easiest and most trusted place to buy and invest
               in crypto.{" "}
             </p>

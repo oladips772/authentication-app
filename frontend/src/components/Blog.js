@@ -14,7 +14,10 @@ function Blog({ blog }) {
     try {
       if (!blogId) return;
       setLoading(true);
-      const { data } = await axios.get("/api/news/otherblogs", blogId.toString());
+      const { data } = await axios.get(
+        "/api/news/otherblogs",
+        blogId.toString()
+      );
       setBlogs(data);
       console.log(data);
       setLoading(false);
@@ -56,24 +59,26 @@ function Blog({ blog }) {
           <OtherBlogsLoader />
         ) : (
           <div className="max-w-[670px] w-full mb-10">
-            <h1 className="text-3xl font-[600]">Read More</h1>
+            <h1 className="text-3xl font-[600] mb-6 p-2">Read More</h1>
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-2">
-              {blogs?.slice(0, 4).filter((item) => item?._id 
-              !== blog?._id)?.map((item) => (
-                <Link
-                  to={`/coinbox_blogs_detail/${item._id}`}
-                  className="hover:shadow-md border-md mx-2 h-full cursor-pointer"
-                >
-                  <img src={item?.image} className="h-[100px] w-full" />
-                  <h1 className="text-[25px] text-black mb-2 font-[700] p-2">
-                    {item?.title}
-                  </h1>
-                  <div className="flex items-center  text-gray-600 font-[600] p-2">
-                    <p> {moment(item?.createdAt).format("LL")}</p>{" "}
-                    <span className="ml-2"> {item?.minuteRead} min read</span>
-                  </div>
-                </Link>
-              ))}
+              {blogs
+                ?.slice(0, 4)
+                .filter((item) => item?._id !== blog?._id)
+                ?.map((item) => (
+                  <Link
+                    to={`/coinbox_blogs_detail/${item._id}`}
+                    className="hover:shadow-md border-md mx-2 h-full cursor-pointer"
+                  >
+                    <img src={item?.image} className="h-[220px] w-full" />
+                    <h1 className="text-[25px] text-black font-[700] p-2">
+                      {item?.title}
+                    </h1>
+                    <div className="flex items-center  text-gray-600 font-[600] p-2">
+                      <p> {moment(item?.createdAt).format("LL")}</p>{" "}
+                      <span className="ml-2"> {item?.minuteRead} min read</span>
+                    </div>
+                  </Link>
+                ))}
             </div>
           </div>
         )}

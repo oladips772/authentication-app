@@ -14,7 +14,7 @@ function Blog({ blog }) {
     try {
       if (!blogId) return;
       setLoading(true);
-      const { data } = await axios.get("/api/news/otherblogs", { blogId });
+      const { data } = await axios.get("/api/news/otherblogs", blogId.toString());
       setBlogs(data);
       console.log(data);
       setLoading(false);
@@ -58,7 +58,8 @@ function Blog({ blog }) {
           <div className="max-w-[670px] w-full mb-10">
             <h1 className="text-3xl font-[600]">Read More</h1>
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-2">
-              {blogs?.slice(0, 4)?.map((item) => (
+              {blogs?.slice(0, 4).filter((item) => item?._id 
+              !== blog?._id)?.map((item) => (
                 <Link
                   to={`/coinbox_blogs_detail/${item._id}`}
                   className="hover:shadow-md border-md mx-2 h-full cursor-pointer"

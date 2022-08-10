@@ -55,7 +55,7 @@ function Navbar() {
         }`}
       >
         <Link
-          to="/"
+          to="/about"
           className={` ${
             !showNav
               ? "font-[500] mx-1 text-[15px] hover:text-blue-600"

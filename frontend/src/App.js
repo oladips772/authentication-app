@@ -8,12 +8,14 @@ import VerifyPage from "./pages/VerfiyPage";
 import ForgotPassword from "./pages/ForgotPassword";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
+import About from "./pages/About";
 
 function App() {
   return (
     <Routes>
       <Route path="/" exact element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/about" element={<About />} />
       <Route path="/signup" element={<Register />} />
       <Route path="/verfiy_account" element={<VerifyPage />} />
       <Route path="/forgot_password" element={<ForgotPassword />} />

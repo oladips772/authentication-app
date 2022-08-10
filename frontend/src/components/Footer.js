@@ -12,13 +12,16 @@ function Footer() {
         </span>
       </div>
       <div className="flex items-center space-x-4 mr-8">
-        <Link to="/" className="text-white font-[600]">
+        <Link to="/about" className="text-white font-[600]">
           About
         </Link>
-        <Link to="/" className="text-white font-[600]">
+        <Link to="/plans" className="text-white font-[600]">
+          Plans
+        </Link>
+        <Link to="/blogs" className="text-white font-[600]">
           Blogs
         </Link>
-        <Link to="/" className="text-white font-[600]">
+        <Link to="/contact" className="text-white font-[600]">
           Contact
         </Link>
       </div>

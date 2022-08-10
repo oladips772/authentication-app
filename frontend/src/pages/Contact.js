@@ -11,7 +11,7 @@ function Contact() {
     <div>
       <Navbar />
       <motion.div
-        className="mt-[120px] max-w-[1070px] mx-auto p-2"
+        className="mt-[120px] max-w-[1070px] mx-auto"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false }}

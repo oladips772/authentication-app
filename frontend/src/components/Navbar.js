@@ -1,7 +1,7 @@
 /** @format */
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -29,7 +29,9 @@ function Navbar() {
         }`}
       >
         {/* <img src={logo} className="h-40 w-40 resize-contain" alt="" /> */}
-        <Link to="/" className="text-[34px] text-blue-900 font-[700]">coinbox</Link>
+        <Link to="/" className="text-[34px] text-blue-900 font-[700]">
+          coinbox
+        </Link>
         <div className="flex md:hidden lg:hidden mr-4">
           {showNav ? (
             <CloseIcon
@@ -54,46 +56,70 @@ function Navbar() {
             : "flex flex-col items-start space-y-4 w-[100%] pb-2"
         }`}
       >
-        <Link
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "rgb(37 99 235)" : "black",
+              borderBottom: isActive ? "solid 3px rgb(37 99 235)" : "",
+            };
+          }}
           to="/about"
           className={` ${
             !showNav
-              ? "font-[500] mx-1 text-[15px] hover:text-blue-600"
+              ? "font-[600] mx-1 text-[18px] hover:text-blue-600"
               : "border-b border-slate-200 font-[500] mx-4 hover:text-blue-600 w-[96%] pb-1"
           }`}
         >
           About
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "rgb(37 99 235)" : "black",
+              borderBottom: isActive ? "solid 3px rgb(37 99 235)" : "",
+            };
+          }}
           to="/plans"
           className={` ${
             !showNav
-              ? "font-[500] mx-4 text-[15px] hover:text-blue-600"
+              ? "font-[600] mx-4 text-[18px] hover:text-blue-600"
               : "border-b border-slate-200 font-[500] mx-4 hover:text-blue-600 w-[96%] pb-1"
           }`}
         >
           Plans
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "rgb(37 99 235)" : "black",
+              borderBottom: isActive ? "solid 3px rgb(37 99 235)" : "",
+            };
+          }}
           to="/coinbox_blogs"
           className={` ${
             !showNav
-              ? "font-[500] mx-4 text-[15px] hover:text-blue-600"
+              ? "font-[600] mx-4 text-[18px] hover:text-blue-600"
               : "border-b border-slate-200 font-[500] mx-4 hover:text-blue-600 w-[96%] pb-1"
           }`}
         >
           Blogs
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "rgb(37 99 235)" : "black",
+              borderBottom: isActive ? "solid 3px rgb(37 99 235)" : "",
+            };
+          }}
           to="/contact"
           className={` ${
             !showNav
-              ? "font-[500] mx-4 text-[15px] hover:text-blue-600"
+              ? "font-[600] mx-4 text-[18px] hover:text-blue-600"
               : "border-b border-slate-200 font-[500] mx-4 hover:text-blue-600 w-[96%] pb-1"
           }`}
         >
           Contact
-        </Link>
+        </NavLink>
       </motion.div>
       {/* actions */}
       <motion.div
@@ -105,22 +131,28 @@ function Navbar() {
             : "flex flex-col items-start space-y-4 pb-2 space-x-4 mt-4"
         }`}
       >
-        <Link
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "rgb(37 99 235)" : "black",
+              borderBottom: isActive ? "solid 3px rgb(37 99 235)" : "",
+            };
+          }}
           to="/login"
           className={` ${
             !showNav
-              ? "font-[500] mx-4 text-[15px]"
-              : "font-[500] mx-4 p-[8px] border-2 border-blue-600 rounded-[4px] text-center max-w-[290px] w-full"
+              ? "font-[600] mx-4 text-[18px]"
+              : "font-[600] mx-4 p-[8px] border-2 border-blue-600 rounded-[4px] text-center max-w-[290px] w-full"
           }  `}
         >
           Sign in
-        </Link>
+        </NavLink>
         <Link
           to="/signup"
           className={`${
             !showNav
-              ? "font-[500] bg-blue-700 text-white h-[36px] p-[2px] text-[15px] w-[98px] flex justify-center items-center rounded-[4px]"
-              : "font-[500] bg-blue-700 text-white p-[8px] rounded-[4px] text-center max-w-[290px] w-full"
+              ? "font-[600] bg-blue-700 text-white h-[38px] p-[2px] text-[18px] w-[100px] flex justify-center items-center rounded-[4px]"
+              : "font-[600] bg-blue-700 text-white p-[8px] rounded-[4px] text-center max-w-[290px] w-full"
           }`}
         >
           Get started

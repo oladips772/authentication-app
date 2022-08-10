@@ -65,7 +65,7 @@ function Navbar() {
           About
         </Link>
         <Link
-          to="/"
+          to="/plans"
           className={` ${
             !showNav
               ? "font-[500] mx-4 text-[15px] hover:text-blue-600"

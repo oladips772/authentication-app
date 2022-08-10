@@ -9,6 +9,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
 import About from "./pages/About";
+import Plans from "./pages/Plans";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/about" element={<About />} />
       <Route path="/signup" element={<Register />} />
+      <Route path="/plans" element={<Plans />} />
       <Route path="/verfiy_account" element={<VerifyPage />} />
       <Route path="/forgot_password" element={<ForgotPassword />} />
       <Route path="/coinbox_blogs" element={<Blogs />} />

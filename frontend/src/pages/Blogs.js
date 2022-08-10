@@ -30,6 +30,7 @@ function Blogs() {
   return (
     <div>
       <motion.div>
+          
         <Navbar />
         <motion.div
           initial={{ opacity: 0 }}

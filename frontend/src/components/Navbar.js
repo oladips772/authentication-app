@@ -60,7 +60,6 @@ function Navbar() {
           style={({ isActive }) => {
             return {
               color: isActive ? "rgb(37 99 235)" : "black",
-              borderBottom: isActive ? "solid 3px rgb(37 99 235)" : "",
             };
           }}
           to="/about"
@@ -76,7 +75,6 @@ function Navbar() {
           style={({ isActive }) => {
             return {
               color: isActive ? "rgb(37 99 235)" : "black",
-              borderBottom: isActive ? "solid 3px rgb(37 99 235)" : "",
             };
           }}
           to="/plans"
@@ -92,7 +90,6 @@ function Navbar() {
           style={({ isActive }) => {
             return {
               color: isActive ? "rgb(37 99 235)" : "black",
-              borderBottom: isActive ? "solid 3px rgb(37 99 235)" : "",
             };
           }}
           to="/coinbox_blogs"
@@ -108,7 +105,6 @@ function Navbar() {
           style={({ isActive }) => {
             return {
               color: isActive ? "rgb(37 99 235)" : "black",
-              borderBottom: isActive ? "solid 3px rgb(37 99 235)" : "",
             };
           }}
           to="/contact"
@@ -135,7 +131,6 @@ function Navbar() {
           style={({ isActive }) => {
             return {
               color: isActive ? "rgb(37 99 235)" : "black",
-              borderBottom: isActive ? "solid 3px rgb(37 99 235)" : "",
             };
           }}
           to="/login"

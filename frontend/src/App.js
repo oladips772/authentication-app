@@ -11,6 +11,7 @@ import BlogDetail from "./pages/BlogDetail";
 import About from "./pages/About";
 import Plans from "./pages/Plans";
 import Contact from "./pages/Contact";
+import Investment from "./pages/Investment";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/plans" element={<Plans />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/verfiy_account" element={<VerifyPage />} />
+      <Route path="/investments_plans" element={<Investment />} />
       <Route path="/forgot_password" element={<ForgotPassword />} />
       <Route path="/coinbox_blogs" element={<Blogs />} />
       <Route path="/coinbox_blogs_detail/:id" element={<BlogDetail />} />

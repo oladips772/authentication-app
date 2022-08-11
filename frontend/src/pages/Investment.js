@@ -1,8 +1,13 @@
 import React from 'react'
+import Navbar from '../components/Navbar';
+
 
 function Investment() {
   return (
-    <div>Investment</div>
+    <div>
+      <Navbar />
+      <div></div>
+    </div>
   )
 }
 

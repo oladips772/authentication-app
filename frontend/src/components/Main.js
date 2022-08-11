@@ -24,7 +24,7 @@ function Main() {
   };
 
   useEffect(() => {
-    // getCoins();
+    // getCoins(); 
   }, []);
 
   return (

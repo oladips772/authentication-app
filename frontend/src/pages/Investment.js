@@ -2,12 +2,18 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
+import Footer from "../components/Footer";
 
 function Investment() {
   return (
     <div>
       <Navbar />
-      <div className="max-w-[1070px] p-2 mt-[120px] mx-auto">
+      <motion.div
+        className="max-w-[1070px] p-2 mt-[120px] mx-auto"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+      >
         <h1 className="text-[35px] font-[700]">
           Make or create your payment receipts.
         </h1>
@@ -16,10 +22,10 @@ function Investment() {
           investment fees to.
         </p>
         <div className="flex flex-col mt-4 break-words">
-          <span className="text-lg font-[600] my-[2px]">
+          <span className="text-lg font-[600] my-[2px] text-gray-600">
             BTC: *dhs^8JHsa?/$kjJGaoTaba_=aisa8JHsa?/$kjJGaoTaba_=
           </span>
-          <span className="text-lg font-[600] my-[2px]">
+          <span className="text-lg font-[600] my-[2px] text-gray-600">
             ETH: *dhs^8JHsa?/$kjJGaoTaba_=aisasa?/$kjJGaoTab
           </span>
         </div>
@@ -103,8 +109,13 @@ function Investment() {
           <button className="bg-blue-600 text-white font-[600] h-[55px] rounded-[25px] mt-6 mb-2">
             Submit
           </button>
+          <span className="text-gray-600 font-[600]">
+            Please Note: payment receipts may take upto 2 hours for payment to
+            be verified.
+          </span>
         </div>
-      </div>
+      </motion.div>
+      <Footer />
     </div>
   );
 }

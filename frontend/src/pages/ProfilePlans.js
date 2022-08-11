@@ -6,4 +6,4 @@ function ProfilePlans() {
   )
 }
 
-export default ProfilePlans
+export default ProfilePlans;

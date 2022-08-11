@@ -1,10 +1,12 @@
 /** @format */
-
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 
 function Plans() {
+  const navigate = useNavigate();
+
   return (
     <div>
       <Navbar />
@@ -40,7 +42,10 @@ function Plans() {
               <span className="mt-4 text-sm font-bold text-gray-500">
                 24/7 withdrawals
               </span>
-              <button className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]">
+              <button
+                className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
+                onClick={() => navigate("/investments_plans")}
+              >
                 Start Now
               </button>
             </div>
@@ -53,7 +58,10 @@ function Plans() {
               <span className="mt-4 text-sm font-bold text-gray-500">
                 24/7 withdrawals
               </span>
-              <button className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]">
+              <button
+                className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
+                onClick={() => navigate("/investments_plans")}
+              >
                 Start Now
               </button>
             </div>{" "}
@@ -66,7 +74,10 @@ function Plans() {
               <span className="mt-4 text-sm font-bold text-gray-500">
                 24/7 withdrawals
               </span>
-              <button className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]">
+              <button
+                className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
+                onClick={() => navigate("/investments_plans")}
+              >
                 Start Now
               </button>
             </div>

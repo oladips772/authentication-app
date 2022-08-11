@@ -8,10 +8,12 @@ import axios from "axios";
 import currencyFormatter from "currency-formatter";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0.95, 0.6], [1.1, 0.4]);
+  const navigate = useNavigate();
 
   const [coins, setCoins] = useState([]);
   const URL =
@@ -24,7 +26,7 @@ function Main() {
   };
 
   useEffect(() => {
-    // getCoins(); 
+    // getCoins();
   }, []);
 
   return (
@@ -148,7 +150,10 @@ function Main() {
               </h1>
               <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
               <p className="font-[600]">12% weekly interest</p>
-              <button className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]">
+              <button
+                className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
+                onClick={() => navigate("/investments_plans")}
+              >
                 Start Now
               </button>
             </div>
@@ -158,7 +163,11 @@ function Main() {
               </h1>
               <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
               <p className="font-[600]">15% weekly interest</p>
-              <button className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]">
+              onClick={() => navigate("/investments_plans")}
+              <button
+                className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
+                onClick={() => navigate("/investments_plans")}
+              >
                 Start Now
               </button>
             </div>{" "}
@@ -168,7 +177,10 @@ function Main() {
               </h1>
               <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
               <p className="font-[600]">10% weekly interest</p>
-              <button className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]">
+              <button
+                className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
+                onClick={() => navigate("/investments_plans")}
+              >
                 Start Now
               </button>
             </div>

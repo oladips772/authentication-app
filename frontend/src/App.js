@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Plans from "./pages/Plans";
 import Contact from "./pages/Contact";
 import Investment from "./pages/Investment";
+import ProfilePlans from "./pages/ProfilePlans";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/signup" element={<Register />} />
       <Route path="/plans" element={<Plans />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/my_profile" element={<ProfilePlans />} />
       <Route path="/verfiy_account" element={<VerifyPage />} />
       <Route path="/investments_plans" element={<Investment />} />
       <Route path="/forgot_password" element={<ForgotPassword />} />

@@ -116,6 +116,21 @@ function Navbar() {
         >
           Contact
         </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "rgb(37 99 235)" : "black",
+            };
+          }}
+          to="/my_profile"
+          className={` ${
+            !showNav
+              ? "font-[600] mx-4 text-[18px] hover:text-blue-600"
+              : "border-b border-slate-200 font-[500] mx-4 hover:text-blue-600 w-[96%] pb-1"
+          }`}
+        >
+          My Profile
+        </NavLink>
       </motion.div>
       {/* actions */}
       <motion.div

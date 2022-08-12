@@ -12,6 +12,8 @@ function MyWithdrawals() {
   const userId = "62dc28e8627a812e6bf4233d";
   const navigate = useNavigate();
   console.log(receipt);
+
+
   const getMyPlans = async () => {
     try {
       const { data } = await axios.get(
@@ -23,6 +25,10 @@ function MyWithdrawals() {
       console.log(err);
     }
   };
+
+  const createWithdrawal = async () => {
+    
+  }
 
   useEffect(() => {
     getMyPlans();
@@ -60,7 +66,7 @@ function MyWithdrawals() {
                   onChange={(e) => setReceipt(e.target.value)}
                 >
                   {plans?.map((plan) => (
-                    <option value={plan.plan.name} id={plan._id} key={plan._id}>
+                    <option value={plan._id} id={plan._id} key={plan._id}>
                       {plan.plan.name} [{plan._id}]
                     </option>
                   ))}

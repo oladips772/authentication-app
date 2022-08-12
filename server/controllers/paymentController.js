@@ -26,6 +26,16 @@ const getAllPayments = asyncHandler(async (req, res) => {
   }
 });
 
+// ? get users payment
+const getUserPayments = asyncHandler(async (req, res) => {
+  const payments = await PaymentReciept.find({
+    _id: { $e: req.body.id },
+  }).populate("owner plan");
+  if (payments) {
+    res.json(payments);
+  }
+});
+
 // ? update or verify payment
 const verifyPayment = asyncHandler(async (req, res) => {
   const paymentToUpdate = await PaymentReciept.findById(req.params.id);
@@ -49,4 +59,5 @@ module.exports = {
   createPayment,
   verifyPayment,
   rejectPayment,
+  getUserPayments,
 };

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 
+
 function ProfilePlans() {
   const [plans, setPlans] = useState([]);
   const userId = "62dc28e8627a812e6bf4233d";

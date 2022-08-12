@@ -44,6 +44,7 @@ function MyWithdrawals() {
         </div>
         <div className="mt-[40px]">
           <h1 className="text-2xl font-[600]">
+
             Make Withdrawal request for any of your investment plan.
           </h1>
           <p>Use the form below to make your Withdrawal request</p>
@@ -55,10 +56,13 @@ function MyWithdrawals() {
                 <h1 className="text-lg font-[600]">
                   Select a plan for withdrawals
                 </h1>
-                <select className="w-full h-[40px] text-lg p-2 cursor-pointer outline-none">
+                <select
+                  className="w-full h-[40px] text-lg p-2 cursor-pointer outline-none"
+                  onChange={(e) => setReceipt(e.target.value)}
+                >
                   {plans.map((plan) => (
                     <option value={plan.plan.name} id={plan._id}>
-                      {plan.plan.name} // {plan._id}
+                      {plan.plan.name} [{plan._id}]
                     </option>
                   ))}
                 </select>

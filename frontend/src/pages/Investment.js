@@ -1,10 +1,29 @@
 /** @format */
-import React from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 function Investment() {
+  const [plans, setPlans] = useState([]);
+  const [plan, setPlan] = useState(null);
+  console.log(plan);
+
+  const getPlans = async () => {
+    try {
+      const { data } = await axios.get("api/plans/get-plans");
+      console.log(data);
+      setPlans(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getPlans();
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -76,10 +95,12 @@ function Investment() {
         <div className="flex flex-col justify-center max-w-[900px] mx-auto p-4 shadow-md rounded-md bg-white mt-8">
           <div className="mb-4">
             <label className="text-lg font-[600] ">Select a plan</label>
-            <select className="w-full h-[40px] text-lg p-2 cursor-pointer outline-none">
-              <option value="Starter Plan">Starter Plan</option>
-              <option value="Silver Plan">Silver Plan</option>
-              <option value="Gold Plan">Gold Plan</option>
+            <select className="w-full h-[40px] text-lg p-2 cursor-pointer outline-none" onChange={(e)=>setPlan(e.target.value)}>
+              {plans?.map((plan) => (
+                <option value={plan.name} id={plan._id}>
+                  {plan.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="mb-4 flex flex-col">
@@ -106,7 +127,7 @@ function Investment() {
               className="h-[40px] outline-none border border-slate-400 rounded-md w-full p-2"
             />
           </div>
-            <button className="bg-blue-600 text-white font-[600] h-[55px] rounded-[25px] mt-6 mb-2">
+          <button className="bg-blue-600 text-white font-[600] h-[55px] rounded-[25px] mt-6 mb-2">
             Submit
           </button>
           <span className="text-gray-600 font-[600]">

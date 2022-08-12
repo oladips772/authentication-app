@@ -28,8 +28,9 @@ const getAllPayments = asyncHandler(async (req, res) => {
 
 // ? get users payment
 const getUserPayments = asyncHandler(async (req, res) => {
+  const { userId } = req.body;
   const payments = await PaymentReciept.find({
-    _id: { $e: req.body.id },
+    owner: { $eq: req.params.id },
   }).populate("owner plan");
   if (payments) {
     res.json(payments);

@@ -106,7 +106,7 @@ function Investment() {
               className="h-[40px] outline-none border border-slate-400 rounded-md w-full p-2"
             />
           </div>
-          <button className="bg-blue-600 text-white font-[600] h-[55px] rounded-[25px] mt-6 mb-2">
+            <button className="bg-blue-600 text-white font-[600] h-[55px] rounded-[25px] mt-6 mb-2">
             Submit
           </button>
           <span className="text-gray-600 font-[600]">

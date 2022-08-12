@@ -5,6 +5,7 @@ import ProfileNav from "../components/ProfileNav";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import { motion } from "framer-motion";
 
 function ProfilePlans() {
   const [plans, setPlans] = useState([]);
@@ -30,7 +31,12 @@ function ProfilePlans() {
   return (
     <div>
       <Navbar />
-      <div className="mt-[100px] max-w-[1070px] p-2 mx-auto mb-[200px]">
+      <motion.div
+        className="mt-[100px] max-w-[1070px] p-2 mx-auto mb-[200px]"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+      >
         <ProfileNav />
         <div className="mt-6">
           <h3 className="text-2xl text-gray-600">Oladips200@gmail.com</h3>
@@ -43,39 +49,43 @@ function ProfilePlans() {
                 <div className="max-w-[400px] p-2 shadow-md rounded-md mt-[40px] border border-slate-300">
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Plan</h1>
-                    <span className="font-[600] text-lg">{plan.plan.name}</span>
+                    <span className="font-[600] text-[15px]">
+                      {plan.plan.name}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Status</h1>
-                    <span className="font-[600] text-lg text-green-600">
+                    <span className="font-[600] text-[15px] text-green-600">
                       {plan.status}
                     </span>
                   </div>
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Interest</h1>
-                    <span className="font-[600] text-lg">
+                    <span className="font-[600] text-[15px]">
                       {plan.plan.interest}
                     </span>
                   </div>
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Amount</h1>
-                    <span className="font-[600] text-lg">${plan.amount}</span>
+                    <span className="font-[600] text-[15px]">
+                      ${plan.amount}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Wallet address</h1>
-                    <span className="font-[600] text-lg">
+                    <span className="font-[600] text-[15px]">
                       ${plan.ownerWallet}
                     </span>
                   </div>
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Transaction Id</h1>
-                    <span className="font-[600] text-lg">
+                    <span className="font-[600] text-[15px]">
                       {plan.transactionId}
                     </span>
                   </div>
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Coinbox Plan Id</h1>
-                    <span className="font-[600] text-lg">{plan._id}</span>
+                    <span className="font-[600] text-[15px]">{plan._id}</span>
                   </div>
                 </div>
               ))}
@@ -96,7 +106,7 @@ function ProfilePlans() {
             </>
           )}
         </div>
-      </div>
+      </motion.div>
       <Footer />
     </div>
   );

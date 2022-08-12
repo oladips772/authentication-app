@@ -14,24 +14,28 @@ import Contact from "./pages/Contact";
 import Investment from "./pages/Investment";
 import ProfilePlans from "./pages/ProfilePlans";
 import MyWithdrawals from "./pages/MyWithdrawals";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" exact element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/signup" element={<Register />} />
-      <Route path="/plans" element={<Plans />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/my_profile" element={<ProfilePlans />} />
-      <Route path="/my_profile_withdrawals" element={<MyWithdrawals />} />
-      <Route path="/verfiy_account" element={<VerifyPage />} />
-      <Route path="/investments_plans" element={<Investment />} />
-      <Route path="/forgot_password" element={<ForgotPassword />} />
-      <Route path="/coinbox_blogs" element={<Blogs />} />
-      <Route path="/coinbox_blogs_detail/:id" element={<BlogDetail />} />
-    </Routes>
+    <>
+      <Toaster />
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/plans" element={<Plans />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/my_profile" element={<ProfilePlans />} />
+        <Route path="/my_profile_withdrawals" element={<MyWithdrawals />} />
+        <Route path="/verfiy_account" element={<VerifyPage />} />
+        <Route path="/investments_plans" element={<Investment />} />
+        <Route path="/forgot_password" element={<ForgotPassword />} />
+        <Route path="/coinbox_blogs" element={<Blogs />} />
+        <Route path="/coinbox_blogs_detail/:id" element={<BlogDetail />} />
+      </Routes>
+    </>
   );
 }
 

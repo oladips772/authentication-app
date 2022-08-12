@@ -85,7 +85,7 @@ function ProfilePlans() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
-                    <h1 className="text-lg">Coinbox Plan Id</h1>
+                    <h1 className="text-lg">Investment Id</h1>
                     <span className="font-[600] text-[15px]">{plan._id}</span>
                   </div>
                 </div>

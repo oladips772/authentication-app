@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function Investment() {
   const [plans, setPlans] = useState([]);
@@ -27,7 +28,7 @@ function Investment() {
     getPlans();
   }, []);
 
- const createPayment = async () => {
+  const createPayment = async () => {
     if (!plan) return;
     const config = {
       headers: {
@@ -40,14 +41,18 @@ function Investment() {
         {
           plan,
           status: "pending",
-          owner:id,
+          owner: id,
           amount,
           transactionId,
           ownerWallet,
         },
         config
       );
+      toast.success("payment created successfully");
       console.log(data);
+      setAmount("");
+      setTransactionId("");
+      setOwnerWallet("");
     } catch (err) {
       console.log(err);
     }

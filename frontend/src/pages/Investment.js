@@ -8,7 +8,10 @@ import axios from "axios";
 function Investment() {
   const [plans, setPlans] = useState([]);
   const [plan, setPlan] = useState(null);
-  console.log(plan);
+  const [amount, setAmount] = useState("");
+  const [transactionId, setTransactionId] = useState("");
+  const [ownerWallet, setOwnerWallet] = useState("");
+  const id = "62dc28e8627a812e6bf4233d";
 
   const getPlans = async () => {
     try {
@@ -23,6 +26,32 @@ function Investment() {
   useEffect(() => {
     getPlans();
   }, []);
+
+ const createPayment = async () => {
+    if (!plan) return;
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const { data } = await axios.post(
+        `api/payment-receipts/create-payment/${id}`,
+        {
+          plan,
+          status: "pending",
+          owner:id,
+          amount,
+          transactionId,
+          ownerWallet,
+        },
+        config
+      );
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
@@ -95,9 +124,12 @@ function Investment() {
         <div className="flex flex-col justify-center max-w-[900px] mx-auto p-4 shadow-md rounded-md bg-white mt-8">
           <div className="mb-4">
             <label className="text-lg font-[600] ">Select a plan</label>
-            <select className="w-full h-[40px] text-lg p-2 cursor-pointer outline-none" onChange={(e)=>setPlan(e.target.value)}>
+            <select
+              className="w-full h-[40px] text-lg p-2 cursor-pointer outline-none"
+              onChange={(e) => setPlan(e.target.value)}
+            >
               {plans?.map((plan) => (
-                <option value={plan.name} id={plan._id}>
+                <option value={plan._id} id={plan._id} key={plan._id}>
                   {plan.name}
                 </option>
               ))}
@@ -106,6 +138,8 @@ function Investment() {
           <div className="mb-4 flex flex-col">
             <label className="text-lg font-[600] ">Amount</label>
             <input
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
               type="number"
               placeholder="amount paid in figures (10000)"
               className="h-[40px] outline-none border border-slate-400 rounded-md w-full p-2"
@@ -114,6 +148,8 @@ function Investment() {
           <div className="mb-4 flex flex-col">
             <label className="text-lg font-[600] ">Transaction ID</label>
             <input
+              value={transactionId}
+              onChange={(e) => setTransactionId(e.target.value)}
               type="text"
               placeholder="your payment transaction id"
               className="h-[40px] outline-none border border-slate-400 rounded-md w-full p-2"
@@ -122,12 +158,17 @@ function Investment() {
           <div className="mb-4 flex flex-col">
             <label className="text-lg font-[600] ">Your Crypto Wallet</label>
             <input
+              value={ownerWallet}
+              onChange={(e) => setOwnerWallet(e.target.value)}
               type="text"
               placeholder="your crypto wallet"
               className="h-[40px] outline-none border border-slate-400 rounded-md w-full p-2"
             />
           </div>
-          <button className="bg-blue-600 text-white font-[600] h-[55px] rounded-[25px] mt-6 mb-2">
+          <button
+            className="bg-blue-600 text-white font-[600] h-[55px] rounded-[25px] mt-6 mb-2"
+            onClick={createPayment}
+          >
             Submit
           </button>
           <span className="text-gray-600 font-[600]">

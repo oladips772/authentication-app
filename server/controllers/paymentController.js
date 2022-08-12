@@ -4,7 +4,7 @@ const PaymentReciept = require("../models/PaymenRecieptModel");
 
 // ? create a payment
 const createPayment = asyncHandler(async (req, res) => {
-  const { plan, status, owner, amount, transactionId, ownerWallet } = req.body;
+  const { plan, status,owner, amount, transactionId, ownerWallet } = req.body;
   const payment = await PaymentReciept.create({
     plan,
     status,

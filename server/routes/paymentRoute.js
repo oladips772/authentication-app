@@ -11,7 +11,7 @@ const paymentRouter = require("express").Router();
 
 paymentRouter.get("/get-payments", getAllPayments);
 paymentRouter.get("/user-payments/:id", getUserPayments);
-paymentRouter.post("/create-payment", createPayment);
+paymentRouter.post("/create-payment/:id", createPayment);
 paymentRouter.put("/verify-payment/:id", verifyPayment);
 paymentRouter.put("/reject-payment/:id", rejectPayment);
 module.exports = paymentRouter;

@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
+import Footer from "../components/Footer";
+import loader from "../components/loader.png";
 
 function MyWithdrawals() {
   const [plans, setPlans] = useState([]);
@@ -44,6 +46,7 @@ function MyWithdrawals() {
   const createWithdrawal = async () => {
     if (!receipt) return;
     try {
+      setLoading(true);
       const { data } = await axios.post("api/withdrawals/create", {
         withdrawalReceipt: receipt,
         status: "pending",
@@ -52,8 +55,12 @@ function MyWithdrawals() {
       });
       setOwnerWallet("");
       toast.success("withdrawal requested successfully");
+      setLoading(false);
+      getMyWithdrawals();
       console.log(data);
     } catch (err) {
+      setLoading(false);
+
       console.log(err);
     }
   };
@@ -62,6 +69,12 @@ function MyWithdrawals() {
     getMyPlans();
     getMyWithdrawals();
   }, []);
+
+  // useEffect(() => {
+  //   if (plans) {
+  //     setReceipt(plans[0].plan._id);
+  //   }
+  // }, []);
 
   return (
     <div>
@@ -90,7 +103,13 @@ function MyWithdrawals() {
                 <div className="max-w-[400px] p-2 shadow-md rounded-md mt-[40px] border border-slate-300">
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Withdrawal Status</h1>
-                    <span className="font-[600] text-[15px] text-green-600">
+                    <span
+                      className={`font-[600] text-[15px] ${
+                        withdrawal.status === "verified" || "pending"
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}
+                    >
                       {withdrawal.status}
                     </span>
                   </div>
@@ -101,11 +120,30 @@ function MyWithdrawals() {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
-                    <h1 className="text-lg">Plan Status</h1>
-                    <span className="font-[600] text-[15px] text-green-600">
-                      {withdrawal.withdrawalReceipt.status}
-                    </span>
+                  <div className="text-green-600 flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
+                    <h1 className="text-lg text-black">Plan Status</h1>
+
+                    {withdrawal.withdrawalReceipt.status === "rejected" && (
+                      <>
+                        <span className="font-[600] text-[15px] text-red-600">
+                          {withdrawal.withdrawalReceipt.status.status}
+                        </span>
+                      </>
+                    )}
+                    {withdrawal.withdrawalReceipt.status === "pending" && (
+                      <>
+                        <span className="font-[600] text-[15px] text-green-600">
+                          {withdrawal.withdrawalReceipt.status.status}
+                        </span>
+                      </>
+                    )}
+                    {withdrawal.withdrawalReceipt.status === "verified" && (
+                      <>
+                        <span className="font-[600] text-[15px] text-green-600">
+                          {withdrawal.withdrawalReceipt.status.status}
+                        </span>
+                      </>
+                    )}
                   </div>
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Wallet address</h1>
@@ -124,16 +162,10 @@ function MyWithdrawals() {
             </>
           ) : (
             <>
-              <div className="mt-[60px] text-center">
+              <div className="mt-[60px] text-center mb-[150px]">
                 <h1 className="text-3xl font-[600] p-2">
-                  You have not invested yet..
+                  You have not made any withdrawal request yet
                 </h1>
-                <p
-                  className="mt-2 font-[600] text-lg cursor-pointer"
-                  onClick={() => navigate("/investments_plans")}
-                >
-                  click here to make your first investment
-                </p>
               </div>
             </>
           )}
@@ -169,10 +201,14 @@ function MyWithdrawals() {
                 </div>
                 <div className="flex flex-col">
                   <button
-                    className="bg-blue-600 text-white font-[600] h-[50px] rounded-[25px] mt-6 mb-2"
+                    className="bg-blue-600 text-white font-[600] h-[50px] rounded-[25px] mt-6 mb-2 text-center flex items-center justify-center"
                     onClick={createWithdrawal}
                   >
-                    Create
+                    {loading ? (
+                      <img scr={loader} className="h-[14px] w-[14px]" alt="" />
+                    ) : (
+                      "Make Withdrawal"
+                    )}
                   </button>
                   <span className="text-gray-600 font-[600]">
                     Please Note: withdrawal request may take upto 2 hours for
@@ -199,6 +235,7 @@ function MyWithdrawals() {
           )}
         </>
       </motion.div>
+      <Footer />
     </div>
   );
 }

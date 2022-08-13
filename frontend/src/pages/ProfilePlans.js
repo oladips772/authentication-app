@@ -55,9 +55,27 @@ function ProfilePlans() {
                   </div>
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Status</h1>
-                    <span className="font-[600] text-[15px] text-green-600">
-                      {plan.status}
-                    </span>
+                    {plan.status === "pending" && (
+                      <>
+                        <span className="font-[600] text-[15px] text-green-600">
+                          {plan.status}
+                        </span>
+                      </>
+                    )}
+                    {plan.status === "verified" && (
+                      <>
+                        <span className="font-[600] text-[15px] text-green-600">
+                          {plan.status}
+                        </span>
+                      </>
+                    )}
+                    {plan.status === "rejected" && (
+                      <>
+                        <span className="font-[600] text-[15px] text-red-600">
+                          {plan.status}
+                        </span>
+                      </>
+                    )}
                   </div>
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Interest</h1>

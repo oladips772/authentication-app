@@ -30,7 +30,7 @@ const getWithdrawals = asyncHandler(async (req, res) => {
 const getMyWithdrawals = asyncHandler(async (req, res) => {
   const withdrawals = await Withdrawal.find({
     owner: { $eq: req.params.id },
-  }).populate("owner plan");
+  }).populate("owner withdrawalReceipt");
   if (withdrawals) {
     res.json(withdrawals);
   }

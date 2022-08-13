@@ -26,6 +26,16 @@ const getWithdrawals = asyncHandler(async (req, res) => {
   }
 });
 
+// ? get my withdrawal
+const getMyWithdrawals = asyncHandler(async (req, res) => {
+  const withdrawals = await Withdrawal.find({
+    owner: { $eq: req.params.id },
+  }).populate("owner plan");
+  if (withdrawals) {
+    res.json(withdrawals);
+  }
+});
+
 // ? update withdrawal status
 const updateWithdrawal = asyncHandler(async (req, res) => {
   const withdrawalToUpdate = await Withdrawal.findById(req.params.id);
@@ -35,4 +45,10 @@ const updateWithdrawal = asyncHandler(async (req, res) => {
   await withdrawalToUpdate.save();
   res.send(withdrawalToUpdate);
 });
-module.exports = { createWithdrawal, getWithdrawals,updateWithdrawal };
+
+module.exports = {
+  createWithdrawal,
+  getWithdrawals,
+  updateWithdrawal,
+  getMyWithdrawals,
+};

@@ -5,6 +5,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import loader from "../components/big-loader.png";
 import smallLoader from "../components/loader.png";
+import moment from "moment"
 
 function WithdrawalPage() {
   const [withdrawals, setWithdrawals] = useState([]);
@@ -100,7 +101,7 @@ function WithdrawalPage() {
                       </div>
                       <div className="flex justify-between items-center my-4">
                         <p>Date Created:</p>
-                        <span>march 21 2022</span>
+                        <span>{moment(item?.createdAt).format("LL")} </span>
                       </div>
                       <div className="flex justify-between items-center my-4">
                         <p>Payment User:</p>

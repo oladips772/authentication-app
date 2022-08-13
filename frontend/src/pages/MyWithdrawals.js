@@ -5,14 +5,16 @@ import ProfileNav from "../components/ProfileNav";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 function MyWithdrawals() {
   const [plans, setPlans] = useState([]);
   const [receipt, setReceipt] = useState(null);
+  const [ownerWallet, setOwnerWallet] = useState("");
   const userId = "62dc28e8627a812e6bf4233d";
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   console.log(receipt);
-
 
   const getMyPlans = async () => {
     try {
@@ -25,14 +27,27 @@ function MyWithdrawals() {
       console.log(err);
     }
   };
-
+      
   const createWithdrawal = async () => {
-    
-  }
+    if (!receipt) return;
+    try {
+      const { data } = await axios.post("api/withdrawals/create", {
+        withdrawalReceipt: receipt,
+        status: "pending",
+        owner: userId,
+        ownerWallet,
+      });
+      setOwnerWallet("")
+      toast.success("withdrawal requested successfully");
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     getMyPlans();
-  }, []);
+  }, []);     
 
   return (
     <div>
@@ -76,12 +91,17 @@ function MyWithdrawals() {
                 <h1 className="text-lg font-[600]">Your wallet address</h1>
                 <input
                   type="text"
+                  value={ownerWallet}
+                  onChange={(e) => setOwnerWallet(e.target.value)}
                   placeholder="your wallet address"
                   className="h-[40px] outline-none border border-slate-400 rounded-md w-full p-2"
                 />
               </div>
               <div className="flex flex-col">
-                <button className="bg-blue-600 text-white font-[600] h-[50px] rounded-[25px] mt-6 mb-2">
+                <button
+                  className="bg-blue-600 text-white font-[600] h-[50px] rounded-[25px] mt-6 mb-2"
+                  onClick={createWithdrawal}
+                >
                   Create
                 </button>
                 <span className="text-gray-600 font-[600]">

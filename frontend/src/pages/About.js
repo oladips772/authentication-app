@@ -1,12 +1,55 @@
 /** @format */
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import admin1 from "../images/admin1.jpg";
 import admin2 from "../images/admin2.jpg";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import axios from "axios";
+
+const testimonials = [
+  {
+    _id: 1,
+    owner: "oladips200@gmail.com",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi!  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi!",
+    date: "12/07/22",
+    status: "approved",
+  },
+  {
+    _id: 2,
+    owner: "ade200@gmail.com",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi!  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi!",
+    date: "8/03/22",
+    status: "pending",
+  },
+  {
+    _id: 2,
+    owner: "ade200@gmail.com",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi!  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi!",
+    date: "8/03/22",
+    status: "pending",
+  },
+  {
+    _id: 2,
+    owner: "ade200@gmail.com",
+    text: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi!  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quisquam placeat. Quidem quae corporis corrupti? Unde repellendus beatae temporibus quod, mollitia incidunt amet aliquid, dolorem atque repudiandae, tempore exercitationem sequi!",
+    date: "8/03/22",
+    status: "pending",
+  },
+];
 
 function About() {
+  const [tests, setTestimonials] = useState([]);
+
+  const getTestimonials = async () => {
+    try {
+      const { data } = await axios.get("/api/testimonials");
+      setTestimonials(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div>
       <Navbar />
@@ -158,13 +201,24 @@ function About() {
                 className="h-[170px] w-[170px] rounded-full object-contain"
               />
               <span className="mt-2 font-[600] text-lg">Dian Otten</span>
-              <p className="font-[700] text-slate-500">product-design analyst</p>
+              <p className="font-[700] text-slate-500">
+                product-design analyst
+              </p>
             </div>
           </div>
         </div>
-        <div>
-          <h1>Our Reveiews </h1>
-          <div></div>
+        <div className="mt-14">
+          <h1 className="text-3xl font-[600] mb-4">Our Reveiews</h1>
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((item) => (
+              <>
+                <div className="p-4 shadow-sm">
+                  <p className="text-gray-500">{item.text}</p>
+                  <span className="font-bold my-2">{item.owner}</span>
+                </div>
+              </>
+            ))}
+          </div>
         </div>
       </motion.div>
       <Footer />

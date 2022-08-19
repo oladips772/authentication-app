@@ -65,7 +65,7 @@ function Navbar() {
           to="/about"
           className={` ${
             !showNav
-              ? "font-[600] mx-1 text-[18px] hover:text-blue-600"
+              ? "font-[500] mx-1 text-[18px] hover:text-blue-600"
               : "border-b border-slate-200 font-[500] mx-4 hover:text-blue-600 w-[96%] pb-1"
           }`}
         >
@@ -80,7 +80,7 @@ function Navbar() {
           to="/plans"
           className={` ${
             !showNav
-              ? "font-[600] mx-4 text-[18px] hover:text-blue-600"
+              ? "font-[500] mx-4 text-[18px] hover:text-blue-600"
               : "border-b border-slate-200 font-[500] mx-4 hover:text-blue-600 w-[96%] pb-1"
           }`}
         >
@@ -95,7 +95,7 @@ function Navbar() {
           to="/coinbox_blogs"
           className={` ${
             !showNav
-              ? "font-[600] mx-4 text-[18px] hover:text-blue-600"
+              ? "font-[500] mx-4 text-[18px] hover:text-blue-600"
               : "border-b border-slate-200 font-[500] mx-4 hover:text-blue-600 w-[96%] pb-1"
           }`}
         >
@@ -110,7 +110,7 @@ function Navbar() {
           to="/contact"
           className={` ${
             !showNav
-              ? "font-[600] mx-4 text-[18px] hover:text-blue-600"
+              ? "font-[500] mx-4 text-[18px] hover:text-blue-600"
               : "border-b border-slate-200 font-[500] mx-4 hover:text-blue-600 w-[96%] pb-1"
           }`}
         >
@@ -125,7 +125,7 @@ function Navbar() {
           to="/my_profile"
           className={` ${
             !showNav
-              ? "font-[600] mx-4 text-[18px] hover:text-blue-600"
+              ? "font-[500] mx-4 text-[18px] hover:text-blue-600"
               : "border-b border-slate-200 font-[500] mx-4 hover:text-blue-600 w-[96%] pb-1"
           }`}
         >
@@ -151,8 +151,8 @@ function Navbar() {
           to="/login"
           className={` ${
             !showNav
-              ? "font-[600] mx-4 text-[18px]"
-              : "font-[600] mx-4 p-[8px] border-2 border-blue-600 rounded-[4px] text-center max-w-[290px] w-full"
+              ? "font-[500] mx-4 text-[18px]"
+              : "font-[500] mx-4 p-[8px] border-2 border-blue-600 rounded-[4px] text-center max-w-[290px] w-full"
           }  `}
         >
           Sign in
@@ -161,8 +161,8 @@ function Navbar() {
           to="/signup"
           className={`${
             !showNav
-              ? "font-[600] bg-blue-700 text-white h-[38px] p-[2px] text-[18px] w-[100px] flex justify-center items-center rounded-[4px]"
-              : "font-[600] bg-blue-700 text-white p-[8px] rounded-[4px] text-center max-w-[290px] w-full"
+              ? "font-[500] bg-blue-700 text-white h-[38px] p-[2px] text-[18px] w-[100px] flex justify-center items-center rounded-[4px]"
+              : "font-[500] bg-blue-700 text-white p-[8px] rounded-[4px] text-center max-w-[290px] w-full"
           }`}
         >
           Get started

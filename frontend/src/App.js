@@ -15,6 +15,9 @@ import Investment from "./pages/Investment";
 import ProfilePlans from "./pages/ProfilePlans";
 import MyWithdrawals from "./pages/MyWithdrawals";
 import { Toaster } from "react-hot-toast";
+import CreateTestimonial from "./pages/CreateTestimonial";
+import ResetPassword from "./pages/ResetPassword";
+
 
 function App() {
   return (
@@ -31,7 +34,9 @@ function App() {
         <Route path="/my_profile_withdrawals" element={<MyWithdrawals />} />
         <Route path="/verfiy_account" element={<VerifyPage />} />
         <Route path="/investments_plans" element={<Investment />} />
+        <Route path="/write_review" element={<CreateTestimonial />} />
         <Route path="/forgot_password" element={<ForgotPassword />} />
+        <Route path="/reset_password" element={<ResetPassword />} />
         <Route path="/coinbox_blogs" element={<Blogs />} />
         <Route path="/coinbox_blogs_detail/:id" element={<BlogDetail />} />
       </Routes>
@@ -39,4 +44,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 

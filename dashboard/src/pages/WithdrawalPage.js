@@ -20,7 +20,7 @@ function WithdrawalPage() {
       const { data } = await axios.put(`/api/withdrawals/update/${id}`);
       setVerifyLoading(false);
       toast.success("you confirmed payment sent");
-      window.location.reload();
+      getWithdrawals()
     } catch (err) {
       setVerifyLoading(false);
       toast.error(err?.response.data.message);

@@ -17,14 +17,20 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    avatar: {
-      type: String,
-      default: "",
-    },
     isVerified: {
-      required:true,
+      required: true,
       type: Boolean,
       default: false,
+    },
+    referals: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    referalCode: {
+      type: String,
+      required: true,
+      unique: true,
     },
   },
   {

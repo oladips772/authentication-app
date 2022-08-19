@@ -1,7 +1,7 @@
 /** @format */
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
-import Footer from "../components/Footer"; 
+import Footer from "../components/Footer";
 
 function About() {
   return (
@@ -21,30 +21,96 @@ function About() {
           />
           <div className="flex flex-col md:p-6 lg:p-6">
             <h1 className="font-[700] text-[80px] p-2">About Coinbox</h1>
-            <p className="font-[500] text-2xl p-2">
-              We are building the cryptoeconomy a more fair, accessible,
-              efficient, and transparent financial system enabled by crypto. We
-              started in 2012 with the radical idea that anyone, anywhere,
-              should be able to easily and securely send and receive Bitcoin.
-              Today, we offer a trusted and easy-to-use platform for accessing
-              the broader cryptoeconomy.
+            <p className="font-[500] text-lg p-2">
+              We are a dynamic group whose main focus is to provide our clients
+              with the best possible service.
+              <br />
+              <br />
+              Coinbox is a profitable and Trusted investment program,
+              established by a strong team of highly skilled traders,and
+              investment consultants in the offline and online investment
+              market.
+              <br />
+              <br />
+              We put your investments in new highly remunerative innovative
+              projects,which offers great returns along.Today our organiaztion
+              has a proffesional team to develop a business.
             </p>
           </div>
         </div>
         {/* grid div */}
-        <div className="flex flex-col items-center md:items-stretch lg:items-stretch md:flex-row lg:flex-row mt-[60px] pb-6 mb-6 mr-8">
+        <div className="flex flex-col items-center md:items-start lg:items-start md:flex-row lg:flex-row mt-[60px] pb-6 mb-6 mr-8">
           <div className="max-w-[550px] mb-6">
             <h1 className="text-3xl font-[700] p-2 mb-2">
-              Coinbox powers the cryptoeconomy investment globe
+              Coinbox powers the cryptoeconomy investment globe.
             </h1>
-            <p className="text-lg font-[600] p-2">
-              Customers around the world discover and begin their journeys with
-              crypto through Coinbase.
+            <p className="text-lg font-[500] p-2">
+              We know how much , where and when to put your investmens. And we
+              Know how to achieve maximum income.
+              <br />
+              <br />
+              We are constantly diversifying our investment portfolio and
+              building stronger connections worldwide. When one opportunity
+              fails, you can be rest assured that our strategy of
+              diversification continues to keep our business profitable and
+              growing.
+              <br />
+              <br />n You have the opportunity right now to join a revolutionary
+              investing opportunity that is sure to continue growing and mature
+              into the most, successful high yeild opportunity today.
+              <br />
+              <br />
             </p>
-            <p className="text-lg font-[600] p-2">
-              Approximately 98 million verified users, 13,000 institutions, and
-              230,000 ecosystem partners in over 100 countries trust Coinbase to
-              easily and securely invest, spend, save, earn, and use crypto.
+            <h1 className="text-3xl font-[700] p-2 mb-2">
+              Our Support Department
+            </h1>
+            <p className="text-lg font-[500] p-2">
+              Our support department is at your disposal 24 hours a day, 7 days
+              a week.
+              <br />
+              All you need to do is to , mmake a deposit using your most
+              conveneint payment processor anfd get in from time to time to
+              withdraw profit.
+              <br />
+              It is easy and effective...
+              <br />
+              <br />
+              We are active in the foreign exchange trading market and endavour
+              to remain at the forefront of the bitcoin industry and such we can
+              provide all our clients with strong investment choices.
+              <br />
+              <br />
+              Our regular use of progressive infrastructure and automated
+              payment processing has allowed us to look for ways to offer our
+              customers more value.
+              <br />
+              <br />
+              It's time to begin drawing your assests! Coinbox offers the most
+              stable returns for you with the lowest investment risks.
+              <br />
+              <br />
+              So many investores hav beeen making nice profits from us everyday.
+              Coinbox has only one motive , to offer an investment platform that
+              is user-freindly which help our investors make smart profits.
+              <br />
+              <br />
+              Client satisfaction with our services is the only motive of
+              Coinbox.
+              <br />
+              <br />
+              We are using 5 Gbps DDos Protection with 99% up-time gaurantee.
+              Complex Layer 7 Protection. Global CDN Web Application Firewall +
+              Certified Domain SSL certificate for secure connection to our
+              website.
+              <br />
+              <br />
+              We are using up-to-date anti-hacker technologies, to safely
+              receive your deposit and pay out your profit.
+              <br />
+              <br />
+              Join Coinbox today and let your money work for yoy , if you have
+              any problems or futher questions! You are most welcome to contact
+              us using our contact section.
             </p>
           </div>
           {/* mini grid main */}
@@ -67,7 +133,12 @@ function About() {
             </div>
           </section>
         </div>
-
+        {/* our team */}
+        <div>
+          <div>
+            <h1>Our Team</h1>
+          </div>
+        </div>
       </motion.div>
       <Footer />
     </div>

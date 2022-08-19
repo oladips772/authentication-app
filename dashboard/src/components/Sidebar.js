@@ -127,6 +127,21 @@ function Sidebar() {
         </div>
         <div className="my-4">
           <NavLink
+            to="/Testimonials"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "white" : "darkgray",
+                borderLeft: isActive ? "solid 4px white" : "",
+              };
+            }}
+          >
+            <LibraryBooksOutlinedIcon className="mx-4 text-lg" />
+            <p className="text-[12px] font-semibold">TESTIMONIALS</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink
             to="/Admin"
             className="flex items-center"
             style={({ isActive }) => {

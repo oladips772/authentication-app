@@ -70,11 +70,6 @@ function MyWithdrawals() {
     getMyWithdrawals();
   }, []);
 
-  // useEffect(() => {
-  //   if (plans) {
-  //     setReceipt(plans[0].plan._id);
-  //   }
-  // }, []);
 
   return (
     <div>
@@ -116,31 +111,29 @@ function MyWithdrawals() {
                   <div className="flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg">Plan</h1>
                     <span className="font-[600] text-[15px]">
-                      {withdrawal.withdrawalReceipt._id}
+                      {withdrawal?.withdrawalReceipt?._id}
                     </span>
                   </div>
-
                   <div className="text-green-600 flex items-center justify-between mb-[10px] border-b border-slate-200 pb-[5px]">
                     <h1 className="text-lg text-black">Plan Status</h1>
-
-                    {withdrawal.withdrawalReceipt.status === "rejected" && (
+                    {withdrawal?.withdrawalReceipt?.status === "rejected" && (
                       <>
                         <span className="font-[600] text-[15px] text-red-600">
-                          {withdrawal.withdrawalReceipt.status.status}
+                          {withdrawal.withdrawalReceipt?.status}
                         </span>
                       </>
                     )}
-                    {withdrawal.withdrawalReceipt.status === "pending" && (
+                    {withdrawal?.withdrawalReceipt?.status === "pending" && (
                       <>
                         <span className="font-[600] text-[15px] text-green-600">
-                          {withdrawal.withdrawalReceipt.status.status}
+                          {withdrawal?.withdrawalReceipt?.status}
                         </span>
                       </>
                     )}
-                    {withdrawal.withdrawalReceipt.status === "verified" && (
+                    {withdrawal?.withdrawalReceipt?.status === "verified" && (
                       <>
                         <span className="font-[600] text-[15px] text-green-600">
-                          {withdrawal.withdrawalReceipt.status.status}
+                          {withdrawal?.withdrawalReceipt?.status}
                         </span>
                       </>
                     )}
@@ -182,6 +175,7 @@ function MyWithdrawals() {
                     className="w-full h-[40px] text-lg p-2 cursor-pointer outline-none"
                     onChange={(e) => setReceipt(e.target.value)}
                   >
+                    <option value="">select a plan</option>
                     {plans?.map((plan) => (
                       <option value={plan._id} id={plan._id} key={plan._id}>
                         {plan.plan.name} [{plan._id}]

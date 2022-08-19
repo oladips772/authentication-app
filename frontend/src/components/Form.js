@@ -3,23 +3,25 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function Form() {
   const location = useLocation();
   const [invalidUser, setInvalidUser] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [updateLoading, setUpdateLoading] = useState(false);
   const { token, id } = queryString.parse(location.search);
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
     if (password.trim().length < 8 || confirmPassword.trim().length < 8) {
-      alert("passwords legnth are too short!, 8 chars required");
+      toast.error("passwords legnth are too short!, 8 chars required");
     }
     if (password !== confirmPassword) {
-      alert("passwords do not macth");
+      toast.error("passwords do not macth");
       return;
     }
 
@@ -31,10 +33,11 @@ function Form() {
         }
       );
       if (data.success) {
-        alert("password changed successfully");
+        toast.success("password changed successfully");
+        setPassword("");
+        setConfirmPassword("");
       }
       console.log(data);
-      alert("password changed successfully");
     } catch (err) {
       console.log(err);
     }
@@ -58,18 +61,18 @@ function Form() {
     }
   };
 
-  useEffect(() => {
-    isVerifyToken();
-  }, []);
+  // useEffect(() => {
+  //   isVerifyToken();
+  // }, []);
 
   return (
-    <div className="max-w-[600px] m-auto pt-10">
+    <div className="max-w-[600px] m-auto flex flex-col justify-center items-center h-[100vh]">
       {invalidUser ? (
         <h1>No token or wrong token found </h1>
       ) : (
         <form
-          className="shadow-sm rounded-lg bg-white p-10"
-          onSubmit={submitHandler}
+          className="border border-slate-300 rounded-lg bg-white p-2"
+          // onSubmit={submitHandler}
         >
           {invalidUser ? (
             <h1>No token or wrong token found </h1>
@@ -79,26 +82,29 @@ function Form() {
                 <h1> wait a moment verifying token</h1>
               ) : (
                 <>
-                  <h1 className="text-center text-3xl text-gray-500 mb-20">
+                  <h1 className="text-center text-3xl text-blue-700 mb-20 font-[600]">
                     Reset Password
                   </h1>
                   <input
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
-                    className="px-3 border-gray-500 border-2 rounded-md w-full h-10 outline-none p-2 text-lg mb-2"
+                    className="px-3 border-gray-400 border rounded-md w-full h-10 outline-none p-2 text-lg mb-2"
                     placeholder="New Password"
                   />
                   <input
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     type="password"
-                    className="px-3 border-gray-500 border-2 rounded-md w-full h-10 outline-none p-2 mt-2 text-lg"
+                    className="px-3 border-gray-400 border rounded-md w-full h-10 outline-none p-2 mt-2 text-lg"
                     placeholder="Confirm Password"
                   />
-                  <button className="bg-gray-500 text-sm w-full p-2 rounded cursor-pointer text-white font-bold mt-4">
-                    RESET
+                  <button className="bg-blue-600 text-lg w-full h-[40px] rounded-[20px] cursor-pointer text-white font-bold mt-4">
+                    Reset
                   </button>
+                  <h1 className="text-center font-[600] text-blue-600 mt-6 ">
+                    coinbox &copy; all rights reserved.
+                  </h1>
                 </>
               )}
             </>

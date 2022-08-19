@@ -70,15 +70,15 @@ function Investment() {
         <h1 className="text-[35px] font-[700]">
           Make or create your payment receipts.
         </h1>
-        <p className="text-2xl text-gray-500 font-[600]">
+        <p className="text-2xl text-gray-500 font-[500]">
           please choose any of the following addresses to transfer or send your
           investment fees to.
         </p>
         <div className="flex flex-col mt-4 break-words">
-          <span className="text-lg font-[600] my-[2px] text-gray-600">
+          <span className="text-lg font-[500] my-[2px] text-gray-600">
             BTC: *dhs^8JHsa?/$kjJGaoTaba_=aisa8JHsa?/$kjJGaoTaba_=
           </span>
-          <span className="text-lg font-[600] my-[2px] text-gray-600">
+          <span className="text-lg font-[500] my-[2px] text-gray-600">
             ETH: *dhs^8JHsa?/$kjJGaoTaba_=aisasa?/$kjJGaoTab
           </span>
         </div>
@@ -128,11 +128,14 @@ function Investment() {
         </div>
         <div className="flex flex-col justify-center max-w-[900px] mx-auto p-4 shadow-md rounded-md bg-white mt-8">
           <div className="mb-4">
-            <label className="text-lg font-[600] ">Select a plan</label>
+            <label className="text-lg font-[500] ">Select a plan</label>
             <select
               className="w-full h-[40px] text-lg p-2 cursor-pointer outline-none"
               onChange={(e) => setPlan(e.target.value)}
             >
+              <option value="select a plan">
+                select a plan
+              </option>
               {plans?.map((plan) => (
                 <option value={plan._id} id={plan._id} key={plan._id}>
                   {plan.name}
@@ -141,7 +144,7 @@ function Investment() {
             </select>
           </div>
           <div className="mb-4 flex flex-col">
-            <label className="text-lg font-[600] ">Amount</label>
+            <label className="text-lg font-[500] ">Amount</label>
             <input
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
@@ -151,7 +154,7 @@ function Investment() {
             />
           </div>
           <div className="mb-4 flex flex-col">
-            <label className="text-lg font-[600] ">Transaction ID</label>
+            <label className="text-lg font-[500] ">Transaction ID</label>
             <input
               value={transactionId}
               onChange={(e) => setTransactionId(e.target.value)}
@@ -161,7 +164,7 @@ function Investment() {
             />
           </div>
           <div className="mb-4 flex flex-col">
-            <label className="text-lg font-[600] ">Your Crypto Wallet</label>
+            <label className="text-lg font-[500] ">Your Crypto Wallet</label>
             <input
               value={ownerWallet}
               onChange={(e) => setOwnerWallet(e.target.value)}

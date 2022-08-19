@@ -41,10 +41,10 @@ function Main() {
           Jump start your crypto career by investing with us.
         </h2>
         <div className="my-6 text-center flex-col items-center justify-center w-full">
-          <button className="text-lg font-[600] h-[60px] max-w-[290px] w-full my-5 border-2 border-blue-600 text-black">
+          <button className="text-lg font-[600] h-[60px] max-w-[290px] w-full my-5 border-2 border-blue-600 text-black" onClick={()=>navigate("/login")}>
             Sign in{" "}
           </button>
-          <button className="text-lg font-[600] h-[60px] max-w-[290px] w-full bg-blue-700 text-white">
+          <button className="text-lg font-[600] h-[60px] max-w-[290px] w-full bg-blue-700 text-white" onClick={()=>navigate("/signup")}>
             {" "}
             Get started
           </button>
@@ -139,52 +139,58 @@ function Main() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: false }}
       >
-        <h1 className="text-center text-[27px] font-[600] mb-4 text-slate-600">
+        <h1 className="text-center text-[27px] font-[600] mb-4 text-slate-600 mt-4">
           Plans With Assured Profits
         </h1>
-        <motion.div>
-          <motion.div className="flex flex-col items-center md:flex-row lg:flex-row justify-around ">
-            <div className="flex flex-col items-center shadow-md p-[45px] mb-8">
-              <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
-                Silver Plan
-              </h1>
-              <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
-              <p className="font-[600]">12% weekly interest</p>
-              <button
-                className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
-                onClick={() => navigate("/investments_plans")}
-              >
-                Start Now
-              </button>
-            </div>
-            <div className="flex flex-col items-center p-[45px] shadow-md mb-8">
-              <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
-                Gold Plan
-              </h1>
-              <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
-              <p className="font-[600]">15% weekly interest</p>
+        <motion.div className="flex flex-col items-center md:flex-row lg:flex-row justify-around mt-10">
+          <div className="flex flex-col items-center shadow-md p-[45px] mb-8">
+            <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
+              Silver Plan
+            </h1>
+            <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
+            <p className="font-[600]">12% weekly interest</p>
+            <span className="mt-4 text-sm font-bold text-gray-500">
+              24/7 withdrawals
+            </span>
+            <button
+              className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
               onClick={() => navigate("/investments_plans")}
-              <button
-                className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
-                onClick={() => navigate("/investments_plans")}
-              >
-                Start Now
-              </button>
-            </div>{" "}
-            <div className="flex flex-col items-center shadow-md p-[45px] mb-8">
-              <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
-                Starter Plan
-              </h1>
-              <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
-              <p className="font-[600]">10% weekly interest</p>
-              <button
-                className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
-                onClick={() => navigate("/investments_plans")}
-              >
-                Start Now
-              </button>
-            </div>
-          </motion.div>
+            >
+              Start Now
+            </button>
+          </div>
+          <div className="flex flex-col items-center p-[45px] shadow-md mb-8">
+            <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
+              Gold Plan
+            </h1>
+            <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
+            <p className="font-[600]">15% weekly interest</p>
+            <span className="mt-4 text-sm font-bold text-gray-500">
+              24/7 withdrawals
+            </span>
+            <button
+              className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
+              onClick={() => navigate("/investments_plans")}
+            >
+              Start Now
+            </button>
+          </div>{" "}
+          <div className="flex flex-col items-center shadow-md p-[45px] mb-8">
+            <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
+              Starter Plan
+            </h1>
+            <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
+            <p className="font-[600]">10% weekly interest</p>
+            <span className="mt-4 text-sm font-bold text-gray-500">
+              24/7 withdrawals
+            </span>
+            <button
+              className="h-[40px] mt-6 w-[140px] bg-blue-700 text-white rounded-[30px] font-[600]"
+              onClick={() => navigate("/investments_plans")}
+            >
+              Start Now
+            </button>
+          </div>
         </motion.div>
       </motion.div>
       {/*  get started div*/}

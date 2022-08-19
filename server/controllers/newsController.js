@@ -22,7 +22,7 @@ const createNews = asyncHandler(async (req, res) => {
 
 // ? get all news function
 const getAllNews = asyncHandler(async (req, res) => {
-  const news = await News.find();
+  const news = await News.find({ status: "approved" });
   if (news) {
     res.status(200).send(news);
   } else {
@@ -33,7 +33,7 @@ const getAllNews = asyncHandler(async (req, res) => {
 // ? get other news excluding current reading blog
 const getOtherBlogs = asyncHandler(async (req, res) => {
   const { blogId } = req.body;
-  const news = await News.find({ _id: { $ne:blogId } });
+  const news = await News.find({ _id: { $ne: blogId } });
   if (news) {
     res.status(200).send(news);
   } else {

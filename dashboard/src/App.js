@@ -13,6 +13,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Contents from "./pages/Contents";
 import CreateContent from "./pages/CreateContent";
 import ContentDetails from "./pages/ContentDetails";
+import Testimonial from "./pages/Testimonial";
 
 function App() {
   return (
@@ -52,6 +53,15 @@ function App() {
             <PrivateRoute>
               {" "}
               <UsersPage />{" "}
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Testimonials"
+          element={
+            <PrivateRoute>
+              {" "}
+              <Testimonial />{" "}
             </PrivateRoute>
           }
         />

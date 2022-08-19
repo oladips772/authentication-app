@@ -9,6 +9,7 @@ function BlogPosts({ blogs }) {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-[1070px] mx-auto mb-8">
         {blogs.map((blog) => (
           <Link
+          key={blog._d}
             to={`/coinbox_blogs_detail/${blog._id}`}
             className="hover:shadow-md border-md mx-2 h-full cursor-pointer"
           >
@@ -18,7 +19,7 @@ function BlogPosts({ blogs }) {
             </h1>
             <div className="flex items-center  text-gray-600 font-[600] p-2">
               <p> {moment(blog?.createdAt).format("LL")}</p>{" "}
-              <span className="ml-2"> {blog.minuteRead} min read</span>
+              <span className="ml-2">{blog?.minuteRead} min read</span>
             </div>
           </Link>
         ))}

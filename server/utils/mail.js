@@ -11,6 +11,15 @@ const generateOTP = () => {
   return otp;
 };
 
+const generateReferal = () => {
+  let otp = "";
+  for (let i = 0; i <= 8; i++) {
+    const randomValue = Math.round(Math.random() * 10);
+    otp = otp + randomValue;
+  }
+  return otp;
+};                                                  
+
 const mailTransport = () =>
   nodemailer.createTransport({
     service: "gmail",
@@ -20,4 +29,4 @@ const mailTransport = () =>
     },
   });
 
-module.exports = { generateOTP, mailTransport };
+module.exports = { generateOTP, mailTransport, generateReferal };

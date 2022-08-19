@@ -44,6 +44,7 @@ function CreateTestimonial() {
           ></textarea>
         </div>
         <button
+          onClick={CreateTestimonial}
           disabled={loading}
           className="bg-blue-700 text-white max-w-[600px] w-full mt-8 h-[40px] font-[500] rounded-[25px]"
         >

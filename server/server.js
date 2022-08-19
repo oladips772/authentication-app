@@ -14,7 +14,7 @@ const testimonialRouter = require("./routes/testimonialRoute.js");
 const app = express();
 app.use(cors())
 const PORT = process.env.PORT;
-
+connectDB();
 app.use(express.json());
 app.use("/api/users", userRouter);
 app.use("/api/payment-receipts", paymentRouter);
@@ -23,7 +23,7 @@ app.use("/api/withdrawals", withdrawalRouter);
 app.use("/api/admins", adminRouter);
 app.use("/api/news", newsRouter);
 app.use("/api/testimonials", testimonialRouter);
-connectDB();
+
 
 app.get("/", (req, res) => {
   res.send(`<h1>hello world</h1>`);

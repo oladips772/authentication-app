@@ -2,6 +2,9 @@
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
+import admin1 from "../images/admin1.jpg";
+import admin2 from "../images/admin2.jpg";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 
 function About() {
   return (
@@ -134,10 +137,34 @@ function About() {
           </section>
         </div>
         {/* our team */}
-        <div>
+        <div className="p-2">
           <div>
-            <h1>Our Team</h1>
+            <h1 className="text-3xl font-[600] mb-4">Meet Our Team</h1>
           </div>
+          <div className="flex flex-col space-y-12 md:space-y-0 lg:space-y-0 md:flex-row lg:flex-row md:space-x-10 lg:space-x-10">
+            <div className="flex flex-col items-center">
+              <img
+                src={admin1}
+                alt=""
+                className="h-[170px] w-[170px] rounded-full object-contain"
+              />
+              <span className="mt-2 font-[600] text-lg">William Wascher</span>
+              <p className="font-[700] text-slate-500">co-founder</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img
+                src={admin2}
+                alt=""
+                className="h-[170px] w-[170px] rounded-full object-contain"
+              />
+              <span className="mt-2 font-[600] text-lg">Dian Otten</span>
+              <p className="font-[700] text-slate-500">product-design analyst</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1>Our Reveiews </h1>
+          <div></div>
         </div>
       </motion.div>
       <Footer />

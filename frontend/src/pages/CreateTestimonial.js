@@ -3,6 +3,7 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function CreateTestimonial() {
   const [text, setText] = useState("");
@@ -16,7 +17,10 @@ function CreateTestimonial() {
         owner: "",
         text,
       });
+      console.log(data)
       setLoading(false);
+      toast.success("reveiew submitted successfully");
+      setText("");
     } catch (err) {
       setLoading(false);
       console.log(err);

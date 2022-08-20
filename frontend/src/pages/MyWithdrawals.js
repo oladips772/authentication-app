@@ -11,34 +11,42 @@ import loader from "../components/loader.png";
 
 function MyWithdrawals() {
   const [plans, setPlans] = useState([]);
+  const [planLoading, setPlanLoading] = useState(false);
+  const [withdrawalLoading, setWithdrawalLoading] = useState(false);
   const [receipt, setReceipt] = useState(null);
   const [withdrawals, setWithdrawals] = useState([]);
   const [ownerWallet, setOwnerWallet] = useState("");
-  const userId = "62dc28e8627a812e6bf4233d";
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   console.log(receipt);
+  const userId = "62dc28e8627a812e6bf4233d";
 
   const getMyPlans = async () => {
     try {
+      setPlanLoading(true);
       const { data } = await axios.get(
         `api/payment-receipts/user-payments/${userId}`
       );
       setPlans(data);
+      setLoading(false);
       console.log(data);
     } catch (err) {
+      setLoading(false);
       console.log(err);
     }
   };
 
   const getMyWithdrawals = async () => {
     try {
+      setWithdrawalLoading(true);
       const { data } = await axios.get(
         `api/withdrawals/user-withdrawals/${userId}`
       );
       setWithdrawals(data);
+      setWithdrawalLoading(false);
       console.log(data);
     } catch (err) {
+      setWithdrawalLoading(false);
       console.log(err);
     }
   };
@@ -70,7 +78,6 @@ function MyWithdrawals() {
     getMyWithdrawals();
   }, []);
 
-
   return (
     <div>
       <Navbar />
@@ -83,7 +90,9 @@ function MyWithdrawals() {
         <ProfileNav />
         <div className="mt-6">
           <h3 className="text-2xl text-gray-600">Oladips200@gmail.com</h3>
-          <span className="text-lg font-[600] text-slate-600">Your Referal Code:7868612-181 </span>
+          <span className="text-lg font-[600] text-slate-600">
+            Your Referal Code:7868612-181{" "}
+          </span>
           <p className="text-gray-700">Your withdrawals request</p>
         </div>
         <div className="mt-[40px]">
@@ -156,11 +165,19 @@ function MyWithdrawals() {
             </>
           ) : (
             <>
-              <div className="mt-[60px] text-center mb-[150px]">
-                <h1 className="text-3xl font-[600] p-2">
-                  You have not made any withdrawal request yet
-                </h1>
-              </div>
+              {withdrawalLoading ? (
+                <div className="h-[400px] mb-10 mt-4">
+                  <h1 className="text-lg font-[600] text-slate-600 mt-8">
+                    fetching your withdrawals , please wait...
+                  </h1>
+                </div>
+              ) : (
+                <div className="mt-[60px] text-center mb-[150px]">
+                  <h1 className="text-3xl font-[600] p-2">
+                    You have not made any withdrawal request yet
+                  </h1>
+                </div>
+              )}
             </>
           )}
         </>
@@ -215,17 +232,25 @@ function MyWithdrawals() {
             </>
           ) : (
             <>
-              <div className="mt-[60px] text-center">
-                <h1 className="text-3xl font-[600] p-2">
-                  You have not invested yet..
-                </h1>
-                <p
-                  className="mt-2 font-[600] text-lg cursor-pointer"
-                  onClick={() => navigate("/investments_plans")}
-                >
-                  click here to make your first investment
-                </p>
-              </div>
+              {planLoading ? (
+                <div className="h-[400px] mb-10 mt-4">
+                  <h1 className="text-lg font-[600] text-slate-600 mt-8">
+                    fetching your plans for withdrawals , please wait...
+                  </h1>
+                </div>
+              ) : (
+                <div className="mt-[60px] text-center">
+                  <h1 className="text-3xl font-[600] p-2">
+                    You have not invested yet..
+                  </h1>
+                  <p
+                    className="mt-2 font-[600] text-lg cursor-pointer"
+                    onClick={() => navigate("/investments_plans")}
+                  >
+                    click here to make your first investment
+                  </p>
+                </div>
+              )}
             </>
           )}
         </>

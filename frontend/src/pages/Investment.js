@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+// TODO:get userinfo  here for creating plans
 function Investment() {
   const [loading, setLoading] = useState(false);
   const [plans, setPlans] = useState([]);
@@ -36,7 +37,7 @@ function Investment() {
         "Content-Type": "application/json",
       },
     };
-    try {
+    try { 
       setLoading(true);
       const { data } = await axios.post(
         `api/payment-receipts/create-payment`,

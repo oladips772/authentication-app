@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import admin1 from "../images/admin1.jpg";
 import admin2 from "../images/admin2.jpg";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import axios from "axios";
 
 const testimonials = [
@@ -50,6 +49,12 @@ function About() {
       console.log(err);
     }
   };
+
+  // useEffect(() => {
+  //   getTestimonials();
+  // }, []);
+
+
   return (
     <div>
       <Navbar />
@@ -207,12 +212,12 @@ function About() {
             </div>
           </div>
         </div>
-        <div className="mt-14">
-          <h1 className="text-3xl font-[600] mb-4">Our Reveiews</h1>
+        <div className="mt-14 p-2">
+          <h1 className="text-3xl font-[600] mb-4">Our Reviews</h1>
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((item) => (
               <>
-                <div className="p-4 shadow-sm">
+                <div className="p-4 shadow-md">
                   <p className="text-gray-500">{item.text}</p>
                   <span className="font-bold my-2">{item.owner}</span>
                 </div>

@@ -7,6 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 function Investment() {
+  const [loading, setLoading] = useState(false);
   const [plans, setPlans] = useState([]);
   const [plan, setPlan] = useState(null);
   const [amount, setAmount] = useState("");
@@ -29,15 +30,16 @@ function Investment() {
   }, []);
 
   const createPayment = async () => {
-    if (!plan) return;
+    if (!plan || !amount || !transactionId || !ownerWallet) return;
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
     try {
+      setLoading(true);
       const { data } = await axios.post(
-        `api/payment-receipts/create-payment/${id}`,
+        `api/payment-receipts/create-payment`,
         {
           plan,
           status: "pending",
@@ -48,12 +50,14 @@ function Investment() {
         },
         config
       );
+      setLoading(false);
       toast.success("payment created successfully");
       console.log(data);
       setAmount("");
       setTransactionId("");
       setOwnerWallet("");
     } catch (err) {
+      setLoading(false);
       console.log(err);
     }
   };
@@ -75,11 +79,8 @@ function Investment() {
           investment fees to.
         </p>
         <div className="flex flex-col mt-4 break-words">
-          <span className="text-lg font-[500] my-[2px] text-gray-600">
-            BTC: *dhs^8JHsa?/$kjJGaoTaba_=aisa8JHsa?/$kjJGaoTaba_=
-          </span>
-          <span className="text-lg font-[500] my-[2px] text-gray-600">
-            ETH: *dhs^8JHsa?/$kjJGaoTaba_=aisasa?/$kjJGaoTab
+          <span className="text-[30px] font-[500] my-[2px] text-gray-600 cursor-pointer">
+            3eb3fbbsmxmz6oqufgk28ygpucuv8u94gx
           </span>
         </div>
         <motion.div>
@@ -133,9 +134,7 @@ function Investment() {
               className="w-full h-[40px] text-lg p-2 cursor-pointer outline-none"
               onChange={(e) => setPlan(e.target.value)}
             >
-              <option value="select a plan">
-                select a plan
-              </option>
+              <option value="select a plan">select a plan</option>
               {plans?.map((plan) => (
                 <option value={plan._id} id={plan._id} key={plan._id}>
                   {plan.name}
@@ -174,10 +173,10 @@ function Investment() {
             />
           </div>
           <button
-            className="bg-blue-600 text-white font-[600] h-[55px] rounded-[25px] mt-6 mb-2"
+            className="bg-blue-600 text-white font-[600] h-[45px] rounded-[25px] mt-6 mb-2"
             onClick={createPayment}
           >
-            Submit
+            {loading ? "Submitting" : "Submit"}
           </button>
           <span className="text-gray-600 font-[600]">
             Please Note: payment receipts may take upto 2 hours for payment to

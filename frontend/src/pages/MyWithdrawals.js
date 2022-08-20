@@ -83,6 +83,7 @@ function MyWithdrawals() {
         <ProfileNav />
         <div className="mt-6">
           <h3 className="text-2xl text-gray-600">Oladips200@gmail.com</h3>
+          <span className="text-lg font-[600] text-slate-600">Your Referal Code:7868612-181 </span>
           <p className="text-gray-700">Your withdrawals request</p>
         </div>
         <div className="mt-[40px]">

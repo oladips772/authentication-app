@@ -8,18 +8,22 @@ import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 
 function ProfilePlans() {
+  const [loading, setLoading] = useState(false);
   const [plans, setPlans] = useState([]);
   const userId = "62dc28e8627a812e6bf4233d";
   const navigate = useNavigate();
 
   const getMyPlans = async () => {
     try {
+      setLoading(true);
       const { data } = await axios.get(
         `api/payment-receipts/user-payments/${userId}`
       );
       setPlans(data);
+      setLoading(false);
       console.log(data);
     } catch (err) {
+      setLoading(false);
       console.log(err);
     }
   };
@@ -39,7 +43,8 @@ function ProfilePlans() {
       >
         <ProfileNav />
         <div className="mt-6">
-          <h3 className="text-2xl text-gray-600">Oladips200@gmail.com</h3>
+          <h3 className="text-[20px] text-gray-600">Oladips200@gmail.com</h3>
+          <span className="text-lg font-[600] text-slate-600">Your Referal Code:7868612-181 </span>
           <p className="text-gray-700">Your Plans / Investments</p>
         </div>
         <div>
@@ -110,17 +115,27 @@ function ProfilePlans() {
             </>
           ) : (
             <>
-              <div className="mt-[60px] text-center">
-                <h1 className="text-3xl font-[600] p-2">
-                  You have not invested yet..
-                </h1>
-                <p
-                  className="mt-2 font-[600] text-lg cursor-pointer"
-                  onClick={() => navigate("/investments_plans")}
-                >
-                  click here to make your first investment
-                </p>
-              </div>
+              {loading ? (
+                <>
+                  <div className="h-[400px] mb-10 mt-4">
+                    <h1 className="text-lg font-[600] text-slate-600 mt-8">
+                      fetching your plans , please wait...
+                    </h1>
+                  </div>
+                </>
+              ) : (
+                <div className="mt-[60px] text-center">
+                  <h1 className="text-3xl font-[600] p-2">
+                    You have not invested yet..
+                  </h1>
+                  <p
+                    className="mt-2 font-[600] text-lg cursor-pointer"
+                    onClick={() => navigate("/investments_plans")}
+                  >
+                    click here to make your first investment
+                  </p>
+                </div>
+              )}
             </>
           )}
         </div>

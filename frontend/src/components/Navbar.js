@@ -30,7 +30,7 @@ function Navbar() {
       >
         {/* <img src={logo} className="h-40 w-40 resize-contain" alt="" /> */}
         <Link to="/" className="text-[34px] text-blue-900 font-[700]">
-          coinbox
+          capicoin
         </Link>
         <div className="flex md:hidden lg:hidden mr-4">
           {showNav ? (
@@ -92,7 +92,7 @@ function Navbar() {
               color: isActive ? "rgb(37 99 235)" : "black",
             };
           }}
-          to="/coinbox_blogs"
+          to="/capicoin_blogs"
           className={` ${
             !showNav
               ? "font-[500] mx-4 text-[18px] hover:text-blue-600"

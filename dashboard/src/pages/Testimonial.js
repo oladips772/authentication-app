@@ -99,16 +99,18 @@ function Testimonial() {
                     <h3 className="font-[600]">Reveiw:</h3>
                     <span className="text-gray-600">{item.text}</span>
                   </div>
-                  <button
-                    className="bg-green-600 text-white font-[600] w-full h-[37px] rounded-sm mt-4"
-                    onClick={() => verifyTest(item._id)}
-                  >
-                    {verifyLoading ? (
-                      <>{selectedId === item._id ? "Approving" : "Approve"}</>
-                    ) : (
-                      "Approve"
-                    )}
-                  </button>
+                  {item.status === "pending" && (
+                    <button
+                      className="bg-green-600 text-white font-[600] w-full h-[37px] rounded-sm mt-4"
+                      onClick={() => verifyTest(item._id)}
+                    >
+                      {verifyLoading ? (
+                        <>{selectedId === item._id ? "Approving" : "Approve"}</>
+                      ) : (
+                        "Approve"
+                      )}
+                    </button>
+                  )}
                 </div>
               ))}
           </div>

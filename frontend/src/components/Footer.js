@@ -6,9 +6,9 @@ function Footer() {
   return (
     <div className="bg-blue-900 h-full flex flex-col items-center md:flex-row lg:flex-row justify-around pb-6 mt-[55px]">
       <div className="px-4 mt-6 mb-8">
-        <h1 className="text-2xl font-bold text-white ">coinbox</h1>
+        <h1 className="text-2xl font-bold text-white ">capicoin</h1>
         <span className="text-white font-[400] text-sm">
-          Copyright &copy; 2022 Coinbox All rights reserved.
+          Copyright &copy; 2022 CapitalCoin All rights reserved.
         </span>
       </div>
       <div className="flex items-center space-x-4 mr-8">
@@ -24,7 +24,7 @@ function Footer() {
         <Link to="/contact" className="text-white font-[600]">
           Contact
         </Link>
-      </div>
+      </div> 
     </div>
   );
 }

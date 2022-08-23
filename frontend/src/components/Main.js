@@ -41,10 +41,16 @@ function Main() {
           Jump start your crypto career by investing with us.
         </h2>
         <div className="my-6 text-center flex-col items-center justify-center w-full">
-          <button className="text-lg font-[600] h-[60px] max-w-[290px] w-full my-5 border-2 border-blue-600 text-black" onClick={()=>navigate("/login")}>
+          <button
+            className="text-lg font-[600] h-[60px] max-w-[290px] w-full my-5 border-2 border-blue-600 text-black"
+            onClick={() => navigate("/login")}
+          >
             Sign in{" "}
           </button>
-          <button className="text-lg font-[600] h-[60px] max-w-[290px] w-full bg-blue-700 text-white" onClick={()=>navigate("/signup")}>
+          <button
+            className="text-lg font-[600] h-[60px] max-w-[290px] w-full bg-blue-700 text-white"
+            onClick={() => navigate("/signup")}
+          >
             {" "}
             Get started
           </button>
@@ -147,7 +153,7 @@ function Main() {
             <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
               Silver Plan
             </h1>
-            <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
+            <h2 className="text-[30px] font-[700]">$1000 - $30,000</h2>
             <p className="font-[600]">12% weekly interest</p>
             <span className="mt-4 text-sm font-bold text-gray-500">
               24/7 withdrawals
@@ -163,7 +169,7 @@ function Main() {
             <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
               Gold Plan
             </h1>
-            <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
+            <h2 className="text-[30px] font-[700]">$5000 - $100,000</h2>
             <p className="font-[600]">15% weekly interest</p>
             <span className="mt-4 text-sm font-bold text-gray-500">
               24/7 withdrawals
@@ -179,7 +185,7 @@ function Main() {
             <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
               Starter Plan
             </h1>
-            <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
+              <h2 className="text-[30px] font-[700]">$100 - $25,000</h2>
             <p className="font-[600]">10% weekly interest</p>
             <span className="mt-4 text-sm font-bold text-gray-500">
               24/7 withdrawals

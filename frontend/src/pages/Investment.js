@@ -37,7 +37,7 @@ function Investment() {
         "Content-Type": "application/json",
       },
     };
-    try { 
+    try {
       setLoading(true);
       const { data } = await axios.post(
         `api/payment-receipts/create-payment`,
@@ -90,7 +90,7 @@ function Investment() {
               <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
                 Silver Plan
               </h1>
-              <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
+              <h2 className="text-[30px] font-[700]">$1000 - $30,000</h2>
               <p className="font-[600]">12% weekly interest</p>
               <span className="mt-4 text-sm font-bold text-gray-500">
                 24/7 withdrawals
@@ -100,7 +100,7 @@ function Investment() {
               <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
                 Gold Plan
               </h1>
-              <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
+              <h2 className="text-[30px] font-[700]">$5000 - $100,000</h2>
               <p className="font-[600]">15% weekly interest</p>
               <span className="mt-4 text-sm font-bold text-gray-500">
                 24/7 withdrawals
@@ -110,7 +110,7 @@ function Investment() {
               <h1 className="text-lg font-[500] border-b border-slate-300 mb-2">
                 Starter Plan
               </h1>
-              <h2 className="text-[30px] font-[700]">$100 - $10,000</h2>
+              <h2 className="text-[30px] font-[700]">$100 - $25,000</h2>
               <p className="font-[600]">10% weekly interest</p>{" "}
               <span className="mt-4 text-sm font-bold text-gray-500">
                 24/7 withdrawals

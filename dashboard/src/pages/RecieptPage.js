@@ -46,7 +46,7 @@ function RecieptPage() {
         {/* header info div */}
         <div className="bg-white p-4 shadow-md">
           <h3 className="text-2xl font-[500]">
-            Payment receipts created by users on coinbox
+            Payment receipts created by users on capicoin
           </h3>
           <p className="text-gray-600">
             you can confirm payments by clicking on the{" "}

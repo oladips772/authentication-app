@@ -18,7 +18,7 @@ function Register() {
     >
       <div className="h-[750px] md:h-[750px] lg:h-[750px] w-full max-w-[410px] p-[10px] border-0 py-6 mt-6 md:mt-0 lg:mt-0 md:max-w-[500px] lg:max-w-[500px] md:border lg:border md:border-slate-300 lg:border-slate-300 md:p-[45px] lg:p-[45px] rounded-lg">
         <div className="mb-[40px] mt-[90px] pt-4 md:pt-0 lg:pt-0 md:mt-[10px] lg:mt-[10px]">
-          <h1 className="text-[30px] mt-10 text-blue-800 font-bold">coinbox</h1>
+          <h1 className="text-[30px] mt-10 text-blue-800 font-bold">capicoin</h1>
           <p className="text-[25px] font-bold">Create your free account.</p>
         </div>
         <div className="flex flex-col mb-4">

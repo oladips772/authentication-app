@@ -36,7 +36,7 @@ function UsersPage() {
         <div className="w-full">
           <div className="p-4 bg-white rounded-sm shadow">
             <h3 className="text-lg p-2 font-[500] border-b border-gray-300">
-              Here are the list of users registered on COINBOX.
+              Here are the list of users registered on capicoin.
             </h3>
             <div className="flex justify-between mt-2">
               <span className="text-[14px] font-bold">NAME</span>

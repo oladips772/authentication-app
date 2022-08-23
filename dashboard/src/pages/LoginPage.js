@@ -88,7 +88,7 @@ function LoginPage() {
           </Link>
         </p>
         <span className="flex items-center justify-center text-gray-700 text-sm">
-          coinbox&copy;2022{" "}
+          capicoin&copy;2022{" "}
         </span>
       </div>
     </div>

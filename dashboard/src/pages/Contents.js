@@ -35,7 +35,7 @@ function Contents() {
       <div className="ml-[240px]">
         <div className="bg-white shadow-md p-4 mb-4">
           <h1 className="text-2xl font-[500]">
-            Contents you created on coinbox are shown here.
+            Contents you created on capicoin are shown here.
           </h1>
           <p className="text-slate-600">
             clicking on a content will take you to the content details page,

@@ -103,7 +103,7 @@ function Form() {
                     Reset
                   </button>
                   <h1 className="text-center font-[600] text-blue-600 mt-6 ">
-                    coinbox &copy; all rights reserved.
+                    capicoin &copy; all rights reserved.
                   </h1>
                 </>
               )}

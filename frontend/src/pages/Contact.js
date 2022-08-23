@@ -18,17 +18,17 @@ function Contact() {
       >
         <div>
           <h1 className="font-[700] text-[35px] p-2">
-            Coinbox Customer Support
+            capicoin Customer Support
           </h1>
           <p className="text-lg p-2">
-            coinbox provides 24/7 customer support both online and offline Lorem
+            capicoin provides 24/7 customer support both online and offline Lorem
             ipsum dolor sit amet consectetur adipisicing elit. Iste asperiores
             sunt aliquid vitae doloremque illum, esse modi consectetur optio
             ipsam ullam soluta inventore dolore temporibus maxime reprehenderit
             consequatur. Modi, odio!
           </p>
           <p className="text-lg p-2">
-            coinbox provides 24/7 customer support both online and offline Lorem
+            capicoin provides 24/7 customer support both online and offline Lorem
             ipsum dolor sit amet consectetur adipisicing elit. Iste asperiores
             sunt aliquid vitae doloremque illum, esse modi consectetur optio
             ipsam ullam soluta inventore dolore temporibus maxime reprehenderit
@@ -37,17 +37,17 @@ function Contact() {
         </div>
         <div>
           <h1 className="font-[700] text-[35px] p-2">
-            Coinbox Withdrawals issues
+            capicoin Withdrawals issues
           </h1>
           <p className="text-lg p-2">
-            coinbox provides 24/7 customer support both online and offline Lorem
+            capicoin provides 24/7 customer support both online and offline Lorem
             ipsum dolor sit amet consectetur adipisicing elit. Iste asperiores
             sunt aliquid vitae doloremque illum, esse modi consectetur optio
             ipsam ullam soluta inventore dolore temporibus maxime reprehenderit
             consequatur. Modi, odio!
           </p>
           <p className="text-lg p-2">
-            coinbox provides 24/7 customer support both online and offline Lorem
+            capicoin provides 24/7 customer support both online and offline Lorem
             ipsum dolor sit amet consectetur adipisicing elit. Iste asperiores
             sunt aliquid vitae doloremque illum, esse modi consectetur optio
             ipsam ullam soluta inventore dolore temporibus maxime reprehenderit
@@ -56,17 +56,17 @@ function Contact() {
         </div>
         <div>
           <h1 className="font-[700] text-[35px] p-2">
-            Coinbox Withdrawals issues
+            capicoin Withdrawals issues
           </h1>
           <p className="text-lg p-2">
-            coinbox provides 24/7 customer support both online and offline Lorem
+            capicoin provides 24/7 customer support both online and offline Lorem
             ipsum dolor sit amet consectetur adipisicing elit. Iste asperiores
             sunt aliquid vitae doloremque illum, esse modi consectetur optio
             ipsam ullam soluta inventore dolore temporibus maxime reprehenderit
             consequatur. Modi, odio!
           </p>
           <p className="text-lg p-2">
-            coinbox provides 24/7 customer support both online and offline Lorem
+            capicoin provides 24/7 customer support both online and offline Lorem
             ipsum dolor sit amet consectetur adipisicing elit. Iste asperiores
             sunt aliquid vitae doloremque illum, esse modi consectetur optio
             ipsam ullam soluta inventore dolore temporibus maxime reprehenderit
@@ -75,7 +75,7 @@ function Contact() {
         </div>
         <div className="mt-10">
           <h1 className="font-[700] text-[18px] p-2">
-            Reach out or get in touch with coinbox 24/7 customer support.
+            Reach out or get in touch with capicoin 24/7 customer support.
           </h1>
           <div>
             <div className="flex items-center p-2">
@@ -99,10 +99,10 @@ function Contact() {
             <div className="flex items-center p-2">
               <MailIcon className="text-blue-700" />
               <a
-                href={`mailto:help@coinbox.com`}
+                href={`mailto:help@capicoin.com`}
                 className="text-lg ml-2 font-bold"
               >
-                help@coinbox.com
+                help@capicoin.com
               </a>
             </div>
           </div>

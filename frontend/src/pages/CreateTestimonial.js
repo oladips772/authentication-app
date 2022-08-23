@@ -32,10 +32,10 @@ function CreateTestimonial() {
       <Navbar />
       <div className="max-w-[1070px] mt-[130px] mx-auto p-2">
         <h1 className="text-[35px] font-[600]">
-          Tell us what you think of Coinbox.
+          Tell us what you think of capicoin.
         </h1>
         <p className="text-lg font-[500]">
-          Write a testimonial or a reveiw about coinbox and your first
+          Write a testimonial or a reveiw about capicoin and your first
           withdrawal
         </p>
         <div className="flex flex-col space-y-2">

@@ -64,10 +64,10 @@ function Testimonial() {
       <div className="ml-[240px]">
         <div className="bg-white shadow-md p-2">
           <h1 className="text-2xl font-[600]">
-            Reviews or Testimonials from users on coinbox.
+            Reviews or Testimonials from users on capicoin.
           </h1>
           <p className="text-gray-600">
-            testimonials will be shown on coinbox only if you've approved them
+            testimonials will be shown on capicoin only if you've approved them
             ,use the approve button to approve a testimonial after you've gone
             through it.
           </p>
@@ -116,7 +116,7 @@ function Testimonial() {
           </div>
           {testimonials.length < 1 && (
             <h1 className="text-center text-2xl p-2">
-              No testimonials or reviews written by users on coinbox yet.
+              No testimonials or reviews written by users on capicoin yet.
             </h1>
           )}
         </div>

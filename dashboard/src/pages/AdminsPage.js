@@ -112,7 +112,7 @@ function AdminsPage() {
         </div>
         <div className="bg-white mt-4 shadow">
           <h1 className="text-2xl p-2 font-[500] border-b border-slate-300">
-            Admins on coinbox
+            Admins on capicoin
           </h1>
           <div className="flex items-center justify-around p-2 shadow-md">
             <h3>Name</h3>

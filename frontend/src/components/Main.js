@@ -212,7 +212,7 @@ function Main() {
               Get started in a few minutes.
             </h2>
             <p className="text-lg font-[600] text-gray-600 text-center flex justify-center mx-4">
-              Coinbox supports a variety of the most popular digital currencies.
+              capicoin supports a variety of the most popular digital currencies.
             </p>
           </div>
           <div className="flex flex-col mt-6 space-y-12 md:space-y-0 lg:space-y-0 items-center md:flex-row md:items-center lg:items-center lg:flex-row justify-between w-full">

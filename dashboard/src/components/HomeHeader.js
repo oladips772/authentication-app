@@ -11,7 +11,7 @@ function HomeHeader() {
       <div className="">
         <h3 className="text-2xl font-bold">Welcome , {adminInfo?.name}</h3>
         <p className="text-gray-600">
-          Here's what's happening in coinbox today.
+          Here's what's happening in capicoin today.
         </p>
       </div>
       <span className="text-[16px] text-gray-900">

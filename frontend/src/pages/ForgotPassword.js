@@ -23,7 +23,7 @@ function ForgotPassword() {
           Send verfication email
         </button>
         <h1 className="text-[28px] text-blue-700 text-center mt-10 font-[700]">
-          coinbox
+          capicoin
         </h1>
       </div>
     </div>

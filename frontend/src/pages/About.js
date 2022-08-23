@@ -71,13 +71,13 @@ function About() {
             className="p-4 h-[300px] md:h-[600px] lg:h-[600px] w-[400px] md:w-[600px] lg:w-[500px]"
           />
           <div className="flex flex-col md:p-6 lg:p-6">
-            <h1 className="font-[700] text-[80px] p-2">About Coinbox</h1>
+            <h1 className="font-[700] text-[80px] p-2">About Capicoin</h1>
             <p className="font-[500] text-lg p-2">
               We are a dynamic group whose main focus is to provide our clients
               with the best possible service.
               <br />
               <br />
-              Coinbox is a profitable and Trusted investment program,
+              capicoin is a profitable and Trusted investment program,
               established by a strong team of highly skilled traders,and
               investment consultants in the offline and online investment
               market.
@@ -93,7 +93,7 @@ function About() {
         <div className="flex flex-col items-center md:items-start lg:items-start md:flex-row lg:flex-row mt-[60px] pb-6 mb-6 mr-8">
           <div className="max-w-[550px] mb-6">
             <h1 className="text-3xl font-[700] p-2 mb-2">
-              Coinbox powers the cryptoeconomy investment globe.
+              CapitalCoin powers the cryptoeconomy investment globe.
             </h1>
             <p className="text-lg font-[500] p-2">
               We know how much , where and when to put your investmens. And we
@@ -136,17 +136,17 @@ function About() {
               customers more value.
               <br />
               <br />
-              It's time to begin drawing your assests! Coinbox offers the most
+              It's time to begin drawing your assests! capicoin offers the most
               stable returns for you with the lowest investment risks.
               <br />
               <br />
               So many investores hav beeen making nice profits from us everyday.
-              Coinbox has only one motive , to offer an investment platform that
+              capicoin has only one motive , to offer an investment platform that
               is user-freindly which help our investors make smart profits.
               <br />
               <br />
               Client satisfaction with our services is the only motive of
-              Coinbox.
+              capicoin.
               <br />
               <br />
               We are using 5 Gbps DDos Protection with 99% up-time gaurantee.
@@ -159,7 +159,7 @@ function About() {
               receive your deposit and pay out your profit.
               <br />
               <br />
-              Join Coinbox today and let your money work for yoy , if you have
+              Join capicoin today and let your money work for yoy , if you have
               any problems or futher questions! You are most welcome to contact
               us using our contact section.
             </p>

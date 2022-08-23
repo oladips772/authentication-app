@@ -10,7 +10,7 @@ function BlogPosts({ blogs }) {
         {blogs.map((blog) => (
           <Link
           key={blog._d}
-            to={`/coinbox_blogs_detail/${blog._id}`}
+            to={`/capicoin_blogs_detail/${blog._id}`}
             className="hover:shadow-md border-md mx-2 h-full cursor-pointer"
           >
             <img src={blog?.image} className="h-[200px] w-full" />

@@ -18,8 +18,8 @@ function Login() {
     >
       <div className="h-[570px] mt-10 md:mt-0 lg:mt-0 w-full max-w-[410px] p-[10px] py-8 border-0 md:max-w-[500px] lg:max-w-[500px] md:border lg:border md:border-slate-300 lg:border-slate-300 md:p-[45px] md:py-0 lg:py-0 lg:p-[45px] rounded-lg">
         <div className="mb-[40px]">
-          <h1 className="text-[30px] text-blue-800 font-bold mt-8">coinbox</h1>
-          <p className="text-[25px] font-bold">Sign in to Coinbox.</p>
+          <h1 className="text-[30px] text-blue-800 font-bold mt-8">capicoin</h1>
+          <p className="text-[25px] font-bold">Sign in to capicoin.</p>
         </div>
         <div className="flex flex-col mb-4">
           <label htmlFor="email" className="font-[700]">

@@ -37,8 +37,8 @@ function App() {
         <Route path="/write_review" element={<CreateTestimonial />} />
         <Route path="/forgot_password" element={<ForgotPassword />} />
         <Route path="/reset_password" element={<ResetPassword />} />
-        <Route path="/coinbox_blogs" element={<Blogs />} />
-        <Route path="/coinbox_blogs_detail/:id" element={<BlogDetail />} />
+        <Route path="/capicoin_blogs" element={<Blogs />} />
+        <Route path="/capicoin_blogs_detail/:id" element={<BlogDetail />} />
       </Routes>
     </>
   );

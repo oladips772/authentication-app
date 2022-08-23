@@ -24,7 +24,7 @@ function VerfiyPage() {
         <button className="mt-8 w-full text-white bg-blue-600 rounded-[30px] font-[700] h-[43px]">
           Verify
         </button>
-        <h1 className="text-[28px] text-blue-700 text-center mt-10 font-[700]">coinbox</h1>
+        <h1 className="text-[28px] text-blue-700 text-center mt-10 font-[700]">capicoin</h1>
       </div>
     </div>
   );

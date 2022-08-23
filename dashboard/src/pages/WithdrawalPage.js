@@ -51,7 +51,7 @@ function WithdrawalPage() {
         {/* header info div */}
         <div className="bg-white p-4 shadow-md">
           <h3 className="text-2xl font-[500]">
-            Withdrawals requested by users on coinbox
+            Withdrawals requested by users on capicoin
           </h3>
           <p className="text-gray-600">
             you can confirm when you have sent the payment by clicking on the{" "}

@@ -20,10 +20,10 @@ function Plans() {
         <div>
           <div>
             <h1 className="text-[50px] font-[600] p-2 text-start w-full md:text-start lg:text-start">
-              Plans on Coinbox
+              Plans on Capicoin
             </h1>
             <p className="text-gray-600 text-[22px] font-[700] p-2">
-              coinbox offers plans with assured profits for you to invest in ,
+              CapitalCoin offers plans with assured profits for you to invest in ,
               which covers different interest rates and 24\7 withdrawals .
             </p>
           </div>{" "}

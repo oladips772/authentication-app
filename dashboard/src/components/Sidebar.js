@@ -32,7 +32,7 @@ function Sidebar() {
           className="object-contain ml-2 mt-4 h-20 w-20"
           alt=""
         />
-        <p className="text-white text-[12px] font-bold -mt-6 -ml-6">COINBOX</p>
+        <p className="text-white text-[12px] font-bold -mt-6 -ml-6">capicoin</p>
       </div>
       <div className="mt-6">
         <div className="my-4">
